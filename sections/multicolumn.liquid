@@ -21,9 +21,13 @@
   if section.settings.swipe_on_mobile and section.blocks.size > columns_mobile_int
     assign show_mobile_slider = true
   endif
+  assign img_filter = 'none'
+  if section.settings.grayscale
+    assign img_filter = 'grayscale(100%)'
+  endif
 -%}
 
-<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}">
+<div class="multicolumn color-{{ section.settings.color_scheme }} gradient{% unless section.settings.background_style == 'none' and settings.text_boxes_border_thickness > 0 or settings.text_boxes_shadow_opacity > 0 %} background-{{ section.settings.background_style }}{% endunless %}{% if section.settings.title == blank %} no-heading{% endif %}" style="--img-filter:{{ img_filter }};">
   <div
     class="page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {% if settings.animations_reveal_on_scroll %}
@@ -236,7 +240,14 @@
     {
       "type": "header",
       "content": "t:sections.multicolumn.settings.header_image.content"
-    },    
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Nuance de gris",
+      "info": "Applique un filtre CSS grayscale sur toutes les images",
+      "default": false
+    },
     {
       "type": "select",
       "id": "image_width",

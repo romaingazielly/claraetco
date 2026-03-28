@@ -297,6 +297,7 @@
         "heading_size": "h1",
         "margin_top": 0,
         "margin_bottom": 20,
+        "grayscale": true,
         "bg_color": "#f6f4ef",
         "text_color": "#173557",
         "row_height": 100,
@@ -399,6 +400,7 @@
         "heading_size": "h2",
         "margin_top": 0,
         "margin_bottom": 0,
+        "grayscale": true,
         "bg_color": "#f6f4ef",
         "text_color": "#173557",
         "row_height": 100,
@@ -512,6 +514,52 @@
         "padding_top": 0,
         "padding_bottom": 52
       }
+    },
+    "multicolumn_4tJnNV": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_hjRHwR": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/le-nouvelliste.webp",
+            "title": "",
+            "text": "",
+            "link_label": "Lire l'article",
+            "link": "https://www.lenouvelliste.ch/valais/valais-central/des-bougies-pour-faire-rever-pendant-les-fetes-1133515"
+          }
+        },
+        "column_eWpTHL": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/rts.webp",
+            "title": "",
+            "text": "",
+            "link_label": "Ecouter l'extrait",
+            "link": "https://www.rts.ch/audio-podcast/2023/audio/samedi-chez-vous-clara-vincent-maitre-ciriere-27459172.html"
+          }
+        }
+      },
+      "block_order": [
+        "column_hjRHwR",
+        "column_eWpTHL"
+      ],
+      "name": "Presse",
+      "settings": {
+        "title": "Ils parlent de nous",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -523,6 +571,7 @@
     "item_marquee_CUhALc",
     "item_marquee_fURr6G",
     "image_with_text_hnUJ8e",
-    "rich_text_qFQydx"
+    "rich_text_qFQydx",
+    "multicolumn_4tJnNV"
   ]
 }

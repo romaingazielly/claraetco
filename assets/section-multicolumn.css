@@ -226,6 +226,10 @@
   white-space: nowrap;
 }
 
+.multicolumn-card__image {
+  filter: var(--img-filter, none);
+}
+
 @media screen and (min-width: 990px) {
   .multicolumn-list__item--empty {
     display: list-item;
