@@ -8,6 +8,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# --- Dépendances (si tu utilises npm) ---
+.shopify/
 node_modules/
 dist/

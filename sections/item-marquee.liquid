@@ -1,6 +1,8 @@
 {{ 'section-item-marquee.css' | asset_url | stylesheet_tag }}
 
-<div class="item-marquee" style="--bg:{{ section.settings.bg_color }};--text:{{ section.settings.text_color }};--speed:{{ section.settings.scroll_speed }}s;--gap:{{ section.settings.image_gap }}px;--row-height:{{ section.settings.row_height }}px;--image-height:{{ section.settings.image_height }}px;--margin-top:{{ section.settings.margin_top }}px;--margin-bottom:{{ section.settings.margin_bottom }}px;">
+{%- assign img_filter = 'none' -%}
+{%- if section.settings.grayscale -%}{%- assign img_filter = 'grayscale(100%)' -%}{%- endif -%}
+<div class="item-marquee" style="--bg:{{ section.settings.bg_color }};--text:{{ section.settings.text_color }};--speed:{{ section.settings.scroll_speed }}s;--gap:{{ section.settings.image_gap }}px;--row-height:{{ section.settings.row_height }}px;--image-height:{{ section.settings.image_height }}px;--margin-top:{{ section.settings.margin_top }}px;--margin-bottom:{{ section.settings.margin_bottom }}px;--img-filter:{{ img_filter }};">
 
   {%- if section.settings.heading != blank -%}
     <div class="item-marquee__heading-wrapper">
@@ -81,6 +83,17 @@
       "step": 5,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale",
+      "label": "Nuance de gris",
+      "info": "Applique un filtre CSS grayscale sur toutes les images",
+      "default": false
     },
     {
       "type": "header",

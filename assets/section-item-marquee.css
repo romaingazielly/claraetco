@@ -81,6 +81,7 @@
   object-fit: unset;
   display: block;
   opacity: 0.85;
+  filter: var(--img-filter, none);
   transition: opacity 0.3s ease;
   pointer-events: none;
   -webkit-touch-callout: none;
