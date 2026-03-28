@@ -1,0 +1,13 @@
+# --- Environnement & Sécurité ---
+.env
+*.log
+
+# --- Système & IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Dépendances (si tu utilises npm) ---
+node_modules/
+dist/

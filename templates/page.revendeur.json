@@ -1,0 +1,398 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_Vc978G": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_9Jtnnd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Une maison olfactive suisse, pensée pour les lieux d’exception.",
+            "heading_size": "h1"
+          }
+        },
+        "text_8PaKDm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Clara&Co. crée des bougies parfumées haut de gamme et des objets sensoriels à forte identité.<br/> Notre approche est volontairement sélective : nous privilégions des partenaires dont l’univers, la clientèle et l’exigence sont en parfaite cohérence avec la maison.</p><p>👉 Vous souhaitez distribuer Clara&Co. ?<br/> Faites une demande via le formulaire ci-dessous.<br/> Réponse sous 48 à 72h ouvrées.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_9Jtnnd",
+        "text_8PaKDm"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_qwKcQT": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_DDcbmR": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>✦ Une signature olfactive premium</strong>",
+            "text": "<p>Des compositions élégantes et mémorables, conçues pour créer une atmosphère et marquer l’expérience client.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_careND": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>✦ Un objet de désir : design, finitions, présence</strong>",
+            "text": "<p>Chaque pièce est pensée comme un objet décoratif haut de gamme, avec une qualité de fabrication irréprochable.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_QDr8Ff": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>✦ Une marque de niche, rare et identitaire</strong>",
+            "text": "<p>Clara&Co. n’est pas une marque “mass market”.<br/> Nous protégeons la valeur perçue par une distribution maîtrisée.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_HyxDaq": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>✦ Un accompagnement professionnel</strong>",
+            "text": "<p>Sélection de démarrage, recommandations saisonnières, conseils merchandising et supports de communication sur demande.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_DDcbmR",
+        "column_careND",
+        "column_QDr8Ff",
+        "column_HyxDaq"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "<strong>Pourquoi Clara&Co. en boutique ?</strong>",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_MhBRF9": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RmiLAY": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>À qui s’adresse la distribution Clara&Co. ?</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_fNnE8t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nos partenaires sont généralement :</p><ul><li>Concept stores & boutiques lifestyle premium</li><li>Boutiques décoration / art de vivre</li><li>Parfumeries de niche</li><li>Hôtels, spas, instituts</li><li>Musées, boutiques culturelles & lieux touristiques d’exception</li></ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RmiLAY",
+        "text_fNnE8t"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/sc-ne-pur-e-dune-boutique-lifestyle-premium-pr-sentoir-l-gant-avec-des-produits-de-parfumerie-et-d-coration-haut-de-gamme-lumi-re-naturelle-tons-neutres-et-chaleureux-ambiance-sophist.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "section_timeline_HRqpyD": {
+      "type": "section-timeline",
+      "blocks": {
+        "step_tyEUMh": {
+          "type": "step",
+          "settings": {
+            "title": "Demande via formulaire",
+            "description": "Parlez-nous de votre projet et de vos besoins.",
+            "show_icon": false,
+            "icon": "✦"
+          }
+        },
+        "step_MGwfH3": {
+          "type": "step",
+          "settings": {
+            "title": "Étude et analyse",
+            "description": "Analyse de votre demande et de vos objectifs.",
+            "show_icon": false,
+            "icon": "✦"
+          }
+        },
+        "step_cqgqkT": {
+          "type": "step",
+          "settings": {
+            "title": "Proposition personnalisée",
+            "description": "Création d'une solution adaptée à vos besoins.",
+            "show_icon": false,
+            "icon": "✦"
+          }
+        },
+        "step_X3bMTA": {
+          "type": "step",
+          "settings": {
+            "title": "Validation et lancement",
+            "description": "Mise en place du projet après validation.",
+            "show_icon": false,
+            "icon": "✦"
+          }
+        },
+        "step_x3wFJM": {
+          "type": "step",
+          "settings": {
+            "title": "Suivi et accompagnement",
+            "description": "Support continu et optimisation.",
+            "show_icon": false,
+            "icon": "✦"
+          }
+        }
+      },
+      "block_order": [
+        "step_tyEUMh",
+        "step_MGwfH3",
+        "step_cqgqkT",
+        "step_X3bMTA",
+        "step_x3wFJM"
+      ],
+      "name": "Timeline",
+      "settings": {
+        "label": "Notre process",
+        "title": "Un parcours <em>sur-mesure</em>",
+        "description": "",
+        "steps_per_row": "5",
+        "show_cta": false,
+        "cta_text": "Commencer",
+        "cta_link": "",
+        "background_color": "#0b1a2a",
+        "accent_color": "#c6a45e",
+        "primary_color": "#f6f4ef",
+        "text_color": "#f6f4ef"
+      }
+    },
+    "section_modern_form_dKgwp4": {
+      "type": "section-modern-form",
+      "name": "Modern Form",
+      "settings": {
+        "label": "Demande revendeur",
+        "title": "Vous souhaitez distribuer Clara&Co. ?",
+        "description": "<p>Merci de compléter ce formulaire. Nous utilisons ces informations pour assurer une cohérence de réseau et vous répondre rapidement.</p>",
+        "quote": "« Nous choisissons nos partenaires avec le même soin que nos compositions. »",
+        "note": "Temps de réponse estimé : 24 à 48h ouvrées.",
+        "form_title": "Formulaire de contact",
+        "success_message": "Merci pour votre message. Nous vous répondrons dans les plus brefs délais.",
+        "firstname_label": "Prénom",
+        "firstname_placeholder": "Votre prénom",
+        "firstname_required": false,
+        "lastname_label": "Nom",
+        "lastname_placeholder": "Votre nom",
+        "lastname_required": false,
+        "email_label": "Email Professionnel",
+        "email_placeholder": "votre@email.com",
+        "show_custom_field_1": true,
+        "custom_field_1_label": "Nom de votre boutique",
+        "custom_field_1_placeholder": "Nom de l'enseigne",
+        "custom_field_1_required": false,
+        "show_location_fields": true,
+        "city_label": "Ville",
+        "city_placeholder": "Votre ville",
+        "country_label": "Pays",
+        "country_placeholder": "Votre pays",
+        "show_select_field": true,
+        "select_label": "Type de point de vente",
+        "select_placeholder": "Sélectionnez une option",
+        "select_options": "Concept store & boutique lifestyle, Boutique décoration / art de vivre, Parfumerie de niche, Hôtel, SPA ou institut, Musée, Boutique culturelle ou lieu touristique, Autre",
+        "show_phone": false,
+        "phone_label": "Téléphone",
+        "phone_placeholder": "+41 xx xxx xx xx",
+        "show_website": true,
+        "website_label": "Site web",
+        "website_placeholder": "https://www.example.com",
+        "website_required": false,
+        "message_label": "Message",
+        "message_placeholder": "Votre message...",
+        "message_required": true,
+        "button_label": "Envoyer",
+        "background_color": "#f6f4ef",
+        "accent_color": "#c6a45e",
+        "primary_color": "#173557",
+        "text_color": "#111111"
+      }
+    },
+    "collapsible_content_qzyLDR": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_Ug9nNt": {
+          "type": "collapsible_row",
+          "name": "Minimum commande",
+          "settings": {
+            "heading": "Y a-t-il un minimum de commande ?",
+            "icon": "none",
+            "row_content": "<p>Oui. Un minimum est demandé afin de garantir une implantation cohérente en boutique. Le montant varie selon la sélection de départ.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_LrQhfm": {
+          "type": "collapsible_row",
+          "name": "Puis-je vendre Clara&Co. en ligne ?",
+          "settings": {
+            "heading": "Puis-je vendre Clara&Co. en ligne ?",
+            "icon": "none",
+            "row_content": "<p>Oui, sous conditions. L’image de marque, le merchandising et la cohérence tarifaire doivent être respectés.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_wPDDzP": {
+          "type": "collapsible_row",
+          "name": "Proposez-vous une exclusivité géographique ?",
+          "settings": {
+            "heading": "Proposez-vous une exclusivité géographique ?",
+            "icon": "none",
+            "row_content": "<p>Selon votre zone, votre positionnement et votre engagement, une exclusivité peut être envisagée.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_ypyAmr": {
+          "type": "collapsible_row",
+          "name": "Sous quel délai livrez-vous ?",
+          "settings": {
+            "heading": "Sous quel délai livrez-vous ?",
+            "icon": "none",
+            "row_content": "<p>Le délai dépend des quantités et des pièces sélectionnées. Une estimation est donnée lors de la confirmation.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_Ug9nNt",
+        "collapsible_row_LrQhfm",
+        "collapsible_row_wPDDzP",
+        "collapsible_row_ypyAmr"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Contenu réductible",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_HU8D3B": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_PmCAtd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Clara&Co.",
+            "heading_size": "h1"
+          }
+        },
+        "text_Ageji6": {
+          "type": "text",
+          "settings": {
+            "text": "<h3><em>Une présence olfactive qui ne se copie pas.<br/></em><strong>Elle se ressent.</strong></h3>"
+          }
+        },
+        "separator_F8rxKY": {
+          "type": "separator",
+          "settings": {
+            "width": "short",
+            "style": "solid"
+          }
+        },
+        "text_EpJHwE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Réponse sous 48 à 72h ouvrées</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PmCAtd",
+        "text_Ageji6",
+        "separator_F8rxKY",
+        "text_EpJHwE"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_Vc978G",
+    "multicolumn_qwKcQT",
+    "image_with_text_MhBRF9",
+    "section_timeline_HRqpyD",
+    "section_modern_form_dKgwp4",
+    "collapsible_content_qzyLDR",
+    "rich_text_HU8D3B"
+  ]
+}

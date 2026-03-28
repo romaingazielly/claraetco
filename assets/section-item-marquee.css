@@ -1,0 +1,123 @@
+.item-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: var(--margin-top, 0);
+  margin-bottom: var(--margin-bottom, 0);
+  contain: layout style;
+}
+
+.item-marquee__heading-wrapper {
+  text-align: center;
+  padding: 2rem 1.5rem 1rem;
+}
+
+.item-marquee__heading {
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.item-marquee__row {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg, #000);
+  color: var(--text, #fff);
+  height: var(--row-height, 100px);
+  contain: content;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.item-marquee__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.item-marquee__track--left {
+  animation: marquee-left var(--speed, 30s) linear infinite;
+}
+
+.item-marquee__track--right {
+  animation: marquee-right var(--speed, 30s) linear infinite;
+}
+
+@media (hover: hover) {
+  .item-marquee__row:hover .item-marquee__track {
+    animation-play-state: paused;
+  }
+}
+
+.item-marquee__track.is-paused {
+  animation-play-state: paused;
+}
+
+.item-marquee__group {
+  display: flex;
+  align-items: center;
+  gap: var(--gap, 60px);
+  padding-right: var(--gap, 60px);
+  flex-shrink: 0;
+}
+
+.item-marquee__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.item-marquee .item-marquee__image {
+  height: var(--image-height, 72px);
+  width: auto;
+  max-width: none;
+  aspect-ratio: auto;
+  object-fit: unset;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+}
+
+@media (hover: hover) {
+  .item-marquee__row:hover .item-marquee__image {
+    opacity: 1;
+  }
+}
+
+.item-marquee__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+@keyframes marquee-left {
+  to { transform: translate3d(calc(-100% / 3), 0, 0); }
+}
+
+@keyframes marquee-right {
+  from { transform: translate3d(calc(-100% / 3), 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item-marquee__track--left,
+  .item-marquee__track--right {
+    animation: none;
+  }
+}
+
+@media (max-width: 749px) {
+  .item-marquee__name {
+    font-size: 0.95rem;
+  }
+}

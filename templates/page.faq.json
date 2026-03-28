@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "collapsible_content_UcHWHq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_Xxqh4K": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "1. Quelles matières sont utilisées pour les bougies Clara&Co.?",
+            "icon": "none",
+            "row_content": "<p>Nos bougies sont fabriquées à partir de cire 100 % végétale et naturelle, sans produits chimiques nocifs. Nous utilisons des mèches en coton ou en bois, et toutes nos fragrances sont sous les normes IFRA.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VaY6LB": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "2. Vos bougies sont-elles écologiques et durables ?",
+            "icon": "none",
+            "row_content": "<p>Oui, nous nous engageons à minimiser notre impact environnemental. Nos bougies sont conçues avec des matériaux durables et respectueux de la planète. Nous utilisons des contenants recyclables ainsi que les packagings.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_remHzz": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "3. Comment faire durer mes bougies plus longtemps ?",
+            "icon": "none",
+            "row_content": "<p>Pour maximiser la durée de vie de vos bougies :</p><ul><li>Coupez la mèche à 5 mm avant chaque utilisation.</li><li>Laissez la bougie brûler jusqu’à ce que la surface soit entièrement fondue pour éviter un tunnel.</li><li>Évitez de brûler la bougie pendant plus de 4 heures d’affilée.</li></ul>",
+            "page": ""
+          }
+        },
+        "collapsible_row_jR38CP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "4. Combien de temps durent vos bougies ?",
+            "icon": "none",
+            "row_content": "<p>La durée de combustion dépend de la taille de la bougie. A titre d'information une bougie d'environs 300 g dure environ 50 à 60 heures, à condition de suivre les instructions d'entretien.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_t6VgiX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "5. Proposez-vous des bougies personnalisées ?",
+            "icon": "none",
+            "row_content": "<p>Oui, nous offrons un service de personnalisation pour des occasions spéciales. Vous pouvez choisir la fragrance, le design du contenant et ajouter un message personnalisé. Contactez-nous pour discuter de vos idées !</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_aENLfP": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "6. Comment savoir si une fragrance me conviendra si je suis sensible aux parfums ?",
+            "icon": "none",
+            "row_content": "<p>Nous sélectionnons soigneusement des fragrances au maximum sans allergènes majeurs, mais nous comprenons que chaque personne est différente. Si vous avez des sensibilités spécifiques, nous vous recommandons d’essayer d’abord une petite bougie pour voir si la fragrance vous convient ou de nous contacter.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_NkNtWr": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "7. Vos bougies sont-elles fabriquées en Suisse ?",
+            "icon": "none",
+            "row_content": "<p>Oui, toutes nos bougies sont fabriquées à la main en Suisse, dans notre atelier avec des ingrédients sourcés.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_Xxqh4K",
+        "collapsible_row_VaY6LB",
+        "collapsible_row_remHzz",
+        "collapsible_row_jR38CP",
+        "collapsible_row_t6VgiX",
+        "collapsible_row_aENLfP",
+        "collapsible_row_NkNtWr"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "Une question sur Clara&Co. ?",
+        "heading_size": "h2",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_blog_3TiYhz": {
+      "type": "featured-blog",
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "actualites",
+        "post_limit": 3,
+        "heading": "Dernières actualités",
+        "heading_size": "h1",
+        "columns_desktop": 3,
+        "show_view_all": true,
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "collapsible_content_UcHWHq",
+    "featured_blog_3TiYhz"
+  ]
+}

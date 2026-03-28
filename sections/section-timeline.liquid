@@ -1,0 +1,248 @@
+{{ 'section-timeline.css' | asset_url | stylesheet_tag }}
+
+<section class="timeline-section" id="timeline-{{ section.id }}" 
+  style="
+    {% if section.settings.background_color != blank %}--timeline-bg: {{ section.settings.background_color }};{% endif %}
+    {% if section.settings.accent_color != blank %}--timeline-accent: {{ section.settings.accent_color }};{% endif %}
+    {% if section.settings.primary_color != blank %}--timeline-primary: {{ section.settings.primary_color }};{% endif %}
+    {% if section.settings.text_color != blank %}--timeline-text: {{ section.settings.text_color }};{% endif %}
+  ">
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="timeline__header">
+      {% if section.settings.label != blank %}
+        <p class="timeline__label">{{ section.settings.label }}</p>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h2 class="timeline__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      {% if section.settings.description != blank %}
+        <div class="timeline__description">{{ section.settings.description }}</div>
+      {% endif %}
+    </div>
+
+    <!-- Timeline Steps -->
+    <div class="timeline__steps timeline__steps--{{ section.settings.steps_per_row }}">
+      {% for block in section.blocks %}
+        <div class="timeline-step" {{ block.shopify_attributes }}>
+          <div class="timeline-step__number">{{ forloop.index }}</div>
+          
+          {% if block.settings.title != blank %}
+            <h3 class="timeline-step__title">{{ block.settings.title }}</h3>
+          {% endif %}
+          
+          {% if block.settings.description != blank %}
+            <p class="timeline-step__desc">{{ block.settings.description }}</p>
+          {% endif %}
+          
+          {% if block.settings.show_icon and block.settings.icon != blank %}
+            <div class="timeline-step__icon">{{ block.settings.icon }}</div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Optional CTA -->
+    {% if section.settings.show_cta and section.settings.cta_text != blank %}
+      <div class="timeline__cta">
+        <a href="{{ section.settings.cta_link }}" class="timeline__button">
+          {{ section.settings.cta_text }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Timeline",
+  "tag": "section",
+  "class": "section-timeline",
+  "settings": [
+    {
+      "type": "header",
+      "content": "En-tête"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette",
+      "default": "Notre process"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Titre",
+      "default": "Un parcours <em>sur-mesure</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description (optionnel)",
+      "info": "Ajoutez une description sous le titre si nécessaire"
+    },
+    {
+      "type": "header",
+      "content": "Disposition"
+    },
+    {
+      "type": "select",
+      "id": "steps_per_row",
+      "label": "Nombre d'étapes par ligne",
+      "options": [
+        {
+          "value": "3",
+          "label": "3 colonnes"
+        },
+        {
+          "value": "4",
+          "label": "4 colonnes"
+        },
+        {
+          "value": "5",
+          "label": "5 colonnes"
+        },
+        {
+          "value": "6",
+          "label": "6 colonnes"
+        }
+      ],
+      "default": "5",
+      "info": "Sur mobile, cela s'adapte automatiquement à 1 ou 2 colonnes"
+    },
+    {
+      "type": "header",
+      "content": "Bouton d'action (optionnel)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Afficher un bouton",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texte du bouton",
+      "default": "Commencer"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "header",
+      "content": "Couleurs"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Couleur de fond",
+      "default": "#0B1A2A"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur d'accent",
+      "default": "#C6A45E"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Couleur primaire (texte principal)",
+      "default": "#F6F4EF"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte secondaire",
+      "default": "#F6F4EF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Étape",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Titre",
+          "default": "Titre de l'étape"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Description de cette étape du processus."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_icon",
+          "label": "Afficher une icône personnalisée",
+          "default": false,
+          "info": "Si activé, une icône apparaîtra en bas de l'étape"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icône (emoji ou symbole)",
+          "default": "✦",
+          "info": "Utilisez un emoji ou un symbole Unicode"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Demande via formulaire",
+            "description": "Parlez-nous de votre projet et de vos besoins."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Étude et analyse",
+            "description": "Analyse de votre demande et de vos objectifs."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Proposition personnalisée",
+            "description": "Création d'une solution adaptée à vos besoins."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Validation et lancement",
+            "description": "Mise en place du projet après validation."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Suivi et accompagnement",
+            "description": "Support continu et optimisation."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

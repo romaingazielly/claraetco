@@ -1,0 +1,64 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "link_list_bmP6DM": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Meilleures ventes",
+            "menu": "meilleurs-ventes"
+          }
+        },
+        "link_list_HfKtLj": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Top Collections",
+            "menu": "nos-collections"
+          }
+        },
+        "link_list_tNj6jc": {
+          "type": "link_list",
+          "settings": {
+            "heading": "à propos",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "link_list_bmP6DM",
+        "link_list_HfKtLj",
+        "link_list_tNj6jc"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "newsletter_enable": true,
+        "newsletter_heading": "Recevoir nos exclusivités",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

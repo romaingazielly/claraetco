@@ -1,0 +1,156 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax_notice": false
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "inventory_dzJzHk": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 5,
+            "show_inventory_quantity": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "custom_image_WG6xrr": {
+          "type": "custom_image",
+          "name": "TrustPilot",
+          "settings": {
+            "image": "shopify://shop_images/Trustpilot.svg",
+            "image_alt": "Clara&Co sur TrustPilot",
+            "image_link": "",
+            "alignment": "left",
+            "mobile_width": 150,
+            "mobile_height": 250,
+            "tablet_width": 200,
+            "tablet_height": 350,
+            "desktop_width": 140,
+            "desktop_height": 500
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "inventory_dzJzHk",
+        "buy_buttons",
+        "custom_image_WG6xrr",
+        "description",
+        "share"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "product_tabs_3qkawL": {
+      "type": "product-tabs",
+      "blocks": {
+        "tab_MPjbPV": {
+          "type": "tab",
+          "name": "POLITIQUE DE LIVRAISON",
+          "settings": {
+            "tab_title": "POLITIQUE DE LIVRAISON",
+            "tab_content": "<p>Dès réception de votre commande sur le site internet et de la confirmation de votre paiement, votre commande sera traitée dans les meilleurs délais. Les commandes sont généralement expédiées dans un délai de 7 jours ouvrables suivant la commande, Clara&Co. ne prend cependant aucun engament en ce sens. En période de soldes ou de forte activité, ce délai pourra être exceptionnellement prolongé.</p>"
+          }
+        },
+        "tab_Wh7JHt": {
+          "type": "tab",
+          "name": "CONSEILS D'UTILISATIONS / INSTRUCTIONS",
+          "settings": {
+            "tab_title": "CONSEILS D'UTILISATIONS / INSTRUCTIONS",
+            "tab_content": "<ol><li>Pour une utilisation optimale, laissez toujours votre bougie brûler jusqu'à ce que toute la surface soit fondue.</li><li>Ne pas laisser brûler votre bougie plus de 2 heures à la fois durant le premier tiers de la bougie et de 1 heure à la fois durant le reste.</li><li>Ne jamais laisser une bougie brûler sans attention. Placez votre bougie à l’abri des courants d’air. Gardez vos bougies hors d’atteinte des enfants, et des animaux domestiques ainsi que des rideaux.</li><li>Ne laissez jamais la bougie se consumer entièrement : éteignez-la en veillant à conserver 1 cm de cire au fond pour garantir la sécurité.</li><li>Après chaque utilisation, veillez à raccourcir les mèches d’environs 0,5 cm. Cette précaution permet de limiter la surchauffe du verre, le risque de casse, les flammes trop hautes, et les dépôts de suie.</li><li>Repositionnez les mèches au centre de la bougie si nécessaire, mais uniquement lorsque la cire est encore souple et légèrement tiède.</li></ol>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_MPjbPV",
+        "tab_Wh7JHt"
+      ],
+      "name": "Product Tabs",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "À découvrir également",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product_tabs_3qkawL",
+    "related-products"
+  ]
+}

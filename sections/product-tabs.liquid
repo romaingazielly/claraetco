@@ -1,0 +1,131 @@
+{{ 'product-tabs.css' | asset_url | stylesheet_tag }}
+
+<div class="product-tabs-wrapper page-width color-{{ section.settings.color_scheme }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="product-tabs">
+    {%- if section.blocks.size > 0 -%}
+      {%- comment -%} En-têtes des onglets {%- endcomment -%}
+      <div class="tabs-header" role="tablist">
+        {%- for block in section.blocks -%}
+          <div 
+            class="tab-button{% if forloop.first %} active{% endif %}" 
+            data-tab-target="tab-{{ block.id }}"
+            role="tab"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            aria-controls="tab-{{ block.id }}"
+            id="tab-button-{{ block.id }}"
+            tabindex="0"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.tab_title }}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Contenu des onglets {%- endcomment -%}
+      <div class="tabs-content">
+        {%- for block in section.blocks -%}
+          <div 
+            class="tab-panel{% if forloop.first %} active{% endif %}" 
+            id="tab-{{ block.id }}"
+            role="tabpanel"
+            aria-labelledby="tab-button-{{ block.id }}"
+          >
+            <div class="tab-content-inner">
+              {{ block.settings.tab_content }}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="placeholder-text">
+        Ajoutez des onglets depuis l'éditeur de thème
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script src="{{ 'product-tabs.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Product Tabs",
+  "tag": "section",
+  "class": "section-product-tabs",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Jeu de couleurs",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding supérieur",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "label": "Padding inférieur",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Titre de l'onglet",
+          "default": "Nouvel onglet"
+        },
+        {
+          "type": "richtext",
+          "id": "tab_content",
+          "label": "Contenu de l'onglet",
+          "default": "<p>Ajoutez votre contenu ici...</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Tabs",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Description",
+            "tab_content": "<h2>Description</h2><p>Ajoutez la description de votre produit ici.</p>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Caractéristiques",
+            "tab_content": "<h2>Caractéristiques</h2><ul><li>Caractéristique 1</li><li>Caractéristique 2</li><li>Caractéristique 3</li></ul>"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_title": "Livraison",
+            "tab_content": "<h2>Informations de livraison</h2><p>Détails sur la livraison...</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

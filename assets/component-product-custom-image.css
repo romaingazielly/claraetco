@@ -1,0 +1,28 @@
+.product-custom-image {
+  display: block;
+  margin: 1rem 0;
+}
+
+.product-custom-image--left {
+  text-align: left;
+}
+
+.product-custom-image--center {
+  text-align: center;
+}
+
+.product-custom-image--right {
+  text-align: right;
+}
+
+.product-custom-image__link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.product-custom-image__img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

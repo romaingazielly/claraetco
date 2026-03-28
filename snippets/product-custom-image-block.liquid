@@ -1,0 +1,98 @@
+{{- 'component-product-custom-image.css' | asset_url | stylesheet_tag -}}
+
+{%- liquid
+  assign image = block.settings.image
+  assign image_link = block.settings.image_link
+  assign alignment = block.settings.alignment
+  assign mobile_width = block.settings.mobile_width
+  assign mobile_height = block.settings.mobile_height
+  assign tablet_width = block.settings.tablet_width
+  assign tablet_height = block.settings.tablet_height
+  assign desktop_width = block.settings.desktop_width
+  assign desktop_height = block.settings.desktop_height
+  assign image_alt = image.alt | default: block.settings.image_alt | escape
+  assign block_selector = '#ProductCustomImage-' | append: block.id
+-%}
+
+{%- if image != blank -%}
+  <style>
+    {{ block_selector }} .product-custom-image__img {
+      width: {{ mobile_width }}px;
+      max-height: {{ mobile_height }}px;
+    }
+
+    @media screen and (min-width: 750px) {
+      {{ block_selector }} .product-custom-image__img {
+        width: {{ tablet_width }}px;
+        max-height: {{ tablet_height }}px;
+      }
+    }
+
+    @media screen and (min-width: 990px) {
+      {{ block_selector }} .product-custom-image__img {
+        width: {{ desktop_width }}px;
+        max-height: {{ desktop_height }}px;
+      }
+    }
+  </style>
+
+  {%- capture image_markup -%}
+    {%- if image.src contains '.svg' -%}
+      <img
+        class="product-custom-image__img"
+        src="{{ image | image_url }}"
+        alt="{{ image_alt }}"
+        loading="lazy"
+        width="{{ desktop_width }}"
+        height="{{ desktop_height }}"
+      >
+    {%- else -%}
+      <picture>
+        <source
+          media="(min-width: 990px)"
+          srcset="
+            {{ image | image_url: width: desktop_width }} 1x,
+            {{ image | image_url: width: desktop_width | times: 2 }} 2x
+          "
+          width="{{ desktop_width }}"
+          height="{{ desktop_height }}"
+        >
+        <source
+          media="(min-width: 750px)"
+          srcset="
+            {{ image | image_url: width: tablet_width }} 1x,
+            {{ image | image_url: width: tablet_width | times: 2 }} 2x
+          "
+          width="{{ tablet_width }}"
+          height="{{ tablet_height }}"
+        >
+        <img
+          class="product-custom-image__img"
+          src="{{ image | image_url: width: mobile_width }}"
+          srcset="
+            {{ image | image_url: width: mobile_width }} 1x,
+            {{ image | image_url: width: mobile_width | times: 2 }} 2x
+          "
+          alt="{{ image_alt }}"
+          loading="lazy"
+          width="{{ mobile_width }}"
+          height="{{ mobile_height }}"
+        >
+      </picture>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div
+    id="ProductCustomImage-{{ block.id }}"
+    class="product-custom-image product-custom-image--{{ alignment }}"
+    {{ block.shopify_attributes }}
+  >
+    {%- if image_link != blank -%}
+      <a href="{{ image_link }}" class="product-custom-image__link">
+        {{ image_markup }}
+      </a>
+    {%- else -%}
+      {{ image_markup }}
+    {%- endif -%}
+  </div>
+{%- endif -%}

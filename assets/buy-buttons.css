@@ -1,0 +1,94 @@
+/* Wrapper global — quantity + add to cart côte à côte, pas de coins arrondis */
+.buy-bar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 52px;
+  gap: 8px; /* espace entre qty et bouton add */
+}
+
+/* Bloc quantité */
+.buy-bar__qty-wrapper.quantity {
+  display: flex;
+  align-items: center;
+  padding: 0 4px 0 8px;
+  border-radius: 0;
+  background: transparent;
+  /* Neutralise les styles Dawn sur .quantity */
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+
+.buy-bar__qty-wrapper .quantity__button {
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--color-foreground));
+  transition: background 0.15s;
+  padding: 0;
+}
+
+.buy-bar__qty-wrapper .quantity__button:hover {
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.buy-bar__qty-wrapper .quantity__input {
+  width: 32px;
+  text-align: center;
+  border: none;
+  background: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgb(var(--color-foreground));
+  -moz-appearance: textfield;
+  padding: 0;
+}
+
+.buy-bar__qty-wrapper .quantity__input::-webkit-outer-spin-button,
+.buy-bar__qty-wrapper .quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Cache la progress-bar dans ce contexte */
+.buy-bar__qty-wrapper .progress-bar {
+  display: none;
+}
+
+/* Bouton add to cart */
+.buy-bar__add-btn.product-form__submit {
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: filter 0.15s;
+  /* Neutralise Dawn */
+  min-height: unset;
+  width: 100%;
+  height: 100%;
+  padding: 0 2rem;
+}
+
+.buy-bar__add-btn.product-form__submit:hover:not([disabled]) {
+  filter: brightness(1.15);
+}
+
+.buy-bar__add-btn.product-form__submit[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Espace entre le buy-bar et le bouton checkout (Shop Pay etc.) */
+.product-form__buttons .shopify-payment-button {
+  margin-top: 12px;
+}

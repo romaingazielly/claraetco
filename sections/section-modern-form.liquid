@@ -1,0 +1,540 @@
+{{ 'section-modern-form.css' | asset_url | stylesheet_tag }}
+
+<section class="modern-form-section" id="modern-form-{{ section.id }}">
+  <div class="container">
+    <div class="modern-form__inner">
+      <!-- Left Side: Introduction -->
+      <div class="modern-form__intro">
+        {% if section.settings.label != blank %}
+          <p class="modern-form__label">{{ section.settings.label }}</p>
+        {% endif %}
+        
+        {% if section.settings.title != blank %}
+          <h2 class="modern-form__title">{{ section.settings.title }}</h2>
+        {% endif %}
+        
+        <div class="modern-form__divider"></div>
+        
+        {% if section.settings.description != blank %}
+          <div class="modern-form__description">{{ section.settings.description }}</div>
+        {% endif %}
+        
+        {% if section.settings.quote != blank %}
+          <blockquote class="modern-form__quote">{{ section.settings.quote }}</blockquote>
+        {% endif %}
+        
+        {% if section.settings.note != blank %}
+          <p class="modern-form__note">{{ section.settings.note }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Right Side: Form -->
+      <div class="modern-form__form-wrapper">
+        {% if section.settings.form_title != blank %}
+          <h3 class="modern-form__form-title">{{ section.settings.form_title }}</h3>
+        {% endif %}
+
+        {% form 'contact', class: 'modern-form__form' %}
+          {% if form.posted_successfully? %}
+            <div class="modern-form__success-message">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+              <p>{{ section.settings.success_message | default: 'Merci pour votre message. Nous vous répondrons dans les plus brefs délais.' }}</p>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="modern-form__error-message">
+              <p>{{ 'templates.contact.form.error_heading' | t }}</p>
+            </div>
+          {% endif %}
+
+          <!-- First and Last Name Row -->
+          <div class="modern-form__row">
+            <div class="modern-form__group">
+              <label for="ContactForm-firstname-{{ section.id }}">
+                {{ section.settings.firstname_label | default: 'Prénom' }}
+              </label>
+              <input
+                type="text"
+                id="ContactForm-firstname-{{ section.id }}"
+                name="contact[{{ 'templates.contact.form.first_name' | t }}]"
+                placeholder="{{ section.settings.firstname_placeholder }}"
+                {% if section.settings.firstname_required %}required{% endif %}
+              >
+            </div>
+            <div class="modern-form__group">
+              <label for="ContactForm-lastname-{{ section.id }}">
+                {{ section.settings.lastname_label | default: 'Nom' }}
+              </label>
+              <input
+                type="text"
+                id="ContactForm-lastname-{{ section.id }}"
+                name="contact[{{ 'templates.contact.form.last_name' | t }}]"
+                placeholder="{{ section.settings.lastname_placeholder }}"
+                {% if section.settings.lastname_required %}required{% endif %}
+              >
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="modern-form__group">
+            <label for="ContactForm-email-{{ section.id }}">
+              {{ section.settings.email_label | default: 'Email' }} <span class="required">*</span>
+            </label>
+            <input
+              type="email"
+              id="ContactForm-email-{{ section.id }}"
+              name="contact[email]"
+              placeholder="{{ section.settings.email_placeholder }}"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <!-- Custom Field 1 (e.g., Store Name) -->
+          {% if section.settings.show_custom_field_1 %}
+            <div class="modern-form__group">
+              <label for="ContactForm-custom1-{{ section.id }}">
+                {{ section.settings.custom_field_1_label }}
+                {% if section.settings.custom_field_1_required %}<span class="required">*</span>{% endif %}
+              </label>
+              <input
+                type="text"
+                id="ContactForm-custom1-{{ section.id }}"
+                name="contact[{{ section.settings.custom_field_1_label }}]"
+                placeholder="{{ section.settings.custom_field_1_placeholder }}"
+                {% if section.settings.custom_field_1_required %}required{% endif %}
+              >
+            </div>
+          {% endif %}
+
+          <!-- City and Country Row -->
+          {% if section.settings.show_location_fields %}
+            <div class="modern-form__row">
+              <div class="modern-form__group">
+                <label for="ContactForm-city-{{ section.id }}">
+                  {{ section.settings.city_label | default: 'Ville' }}
+                </label>
+                <input
+                  type="text"
+                  id="ContactForm-city-{{ section.id }}"
+                  name="contact[{{ section.settings.city_label | default: 'Ville' }}]"
+                  placeholder="{{ section.settings.city_placeholder }}"
+                >
+              </div>
+              <div class="modern-form__group">
+                <label for="ContactForm-country-{{ section.id }}">
+                  {{ section.settings.country_label | default: 'Pays' }}
+                </label>
+                <input
+                  type="text"
+                  id="ContactForm-country-{{ section.id }}"
+                  name="contact[{{ section.settings.country_label | default: 'Pays' }}]"
+                  placeholder="{{ section.settings.country_placeholder }}"
+                >
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- Select Dropdown -->
+          {% if section.settings.show_select_field %}
+            <div class="modern-form__group">
+              <label for="ContactForm-select-{{ section.id }}">
+                {{ section.settings.select_label }}
+              </label>
+              <select
+                id="ContactForm-select-{{ section.id }}"
+                name="contact[{{ section.settings.select_label }}]"
+              >
+                <option value="" disabled selected>{{ section.settings.select_placeholder }}</option>
+                {% assign options = section.settings.select_options | split: ',' %}
+                {% for option in options %}
+                  <option value="{{ option | strip }}">{{ option | strip }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endif %}
+
+          <!-- Phone (optional) -->
+          {% if section.settings.show_phone %}
+            <div class="modern-form__group">
+              <label for="ContactForm-phone-{{ section.id }}">
+                {{ section.settings.phone_label | default: 'Téléphone' }}
+              </label>
+              <input
+                type="tel"
+                id="ContactForm-phone-{{ section.id }}"
+                name="contact[{{ 'templates.contact.form.phone' | t }}]"
+                placeholder="{{ section.settings.phone_placeholder }}"
+              >
+            </div>
+          {% endif %}
+
+          <!-- Website (optional) -->
+          {% if section.settings.show_website %}
+            <div class="modern-form__group">
+              <label for="ContactForm-website-{{ section.id }}">
+                {{ section.settings.website_label | default: 'Site web' }}
+                {% if section.settings.website_required %}<span class="required">*</span>{% endif %}
+              </label>
+              <input
+                type="url"
+                id="ContactForm-website-{{ section.id }}"
+                name="contact[{{ section.settings.website_label | default: 'Site web' }}]"
+                placeholder="{{ section.settings.website_placeholder }}"
+                {% if section.settings.website_required %}required{% endif %}
+              >
+            </div>
+          {% endif %}
+
+          <!-- Message -->
+          <div class="modern-form__group">
+            <label for="ContactForm-message-{{ section.id }}">
+              {{ section.settings.message_label | default: 'Message' }}
+              {% if section.settings.message_required %}<span class="required">*</span>{% endif %}
+            </label>
+            <textarea
+              id="ContactForm-message-{{ section.id }}"
+              name="contact[body]"
+              placeholder="{{ section.settings.message_placeholder }}"
+              rows="5"
+              {% if section.settings.message_required %}required{% endif %}
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="modern-form__submit">
+            <button type="submit" class="modern-form__button">
+              {{ section.settings.button_label | default: 'Envoyer' }}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Modern Form",
+  "tag": "section",
+  "class": "section-modern-form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Introduction (Côté gauche)"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Étiquette",
+      "default": "Contactez-nous"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Parlons de votre projet"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Remplissez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Citation (optionnel)",
+      "default": "« Votre message est important pour nous. »"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note (optionnel)",
+      "default": "Temps de réponse estimé : 24 à 48h ouvrées."
+    },
+    {
+      "type": "header",
+      "content": "Formulaire (Côté droit)"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Titre du formulaire",
+      "default": "Formulaire de contact"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Message de succès",
+      "default": "Merci pour votre message. Nous vous répondrons dans les plus brefs délais."
+    },
+    {
+      "type": "header",
+      "content": "Champs du formulaire"
+    },
+    {
+      "type": "text",
+      "id": "firstname_label",
+      "label": "Label Prénom",
+      "default": "Prénom"
+    },
+    {
+      "type": "text",
+      "id": "firstname_placeholder",
+      "label": "Placeholder Prénom",
+      "default": "Votre prénom"
+    },
+    {
+      "type": "checkbox",
+      "id": "firstname_required",
+      "label": "Prénom requis",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "lastname_label",
+      "label": "Label Nom",
+      "default": "Nom"
+    },
+    {
+      "type": "text",
+      "id": "lastname_placeholder",
+      "label": "Placeholder Nom",
+      "default": "Votre nom"
+    },
+    {
+      "type": "checkbox",
+      "id": "lastname_required",
+      "label": "Nom requis",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Label Email",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Placeholder Email",
+      "default": "votre@email.com"
+    },
+    {
+      "type": "header",
+      "content": "Champ personnalisé 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_custom_field_1",
+      "label": "Afficher champ personnalisé 1",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "custom_field_1_label",
+      "label": "Label",
+      "default": "Nom de votre boutique"
+    },
+    {
+      "type": "text",
+      "id": "custom_field_1_placeholder",
+      "label": "Placeholder",
+      "default": "Nom de l'enseigne"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_field_1_required",
+      "label": "Champ requis",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Localisation"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_location_fields",
+      "label": "Afficher Ville et Pays",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "city_label",
+      "label": "Label Ville",
+      "default": "Ville"
+    },
+    {
+      "type": "text",
+      "id": "city_placeholder",
+      "label": "Placeholder Ville",
+      "default": "Votre ville"
+    },
+    {
+      "type": "text",
+      "id": "country_label",
+      "label": "Label Pays",
+      "default": "Pays"
+    },
+    {
+      "type": "text",
+      "id": "country_placeholder",
+      "label": "Placeholder Pays",
+      "default": "Votre pays"
+    },
+    {
+      "type": "header",
+      "content": "Menu déroulant"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_select_field",
+      "label": "Afficher menu déroulant",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "select_label",
+      "label": "Label",
+      "default": "Type de demande"
+    },
+    {
+      "type": "text",
+      "id": "select_placeholder",
+      "label": "Placeholder",
+      "default": "Sélectionnez une option"
+    },
+    {
+      "type": "textarea",
+      "id": "select_options",
+      "label": "Options (séparées par des virgules)",
+      "default": "Information générale, Support technique, Partenariat, Autre",
+      "info": "Séparez chaque option par une virgule"
+    },
+    {
+      "type": "header",
+      "content": "Téléphone"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Afficher champ téléphone",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "phone_label",
+      "label": "Label Téléphone",
+      "default": "Téléphone"
+    },
+    {
+      "type": "text",
+      "id": "phone_placeholder",
+      "label": "Placeholder Téléphone",
+      "default": "+33 6 00 00 00 00"
+    },
+    {
+      "type": "header",
+      "content": "Site web"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_website",
+      "label": "Afficher champ site web",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "website_label",
+      "label": "Label Site web",
+      "default": "Site web"
+    },
+    {
+      "type": "text",
+      "id": "website_placeholder",
+      "label": "Placeholder Site web",
+      "default": "https://www.example.com"
+    },
+    {
+      "type": "checkbox",
+      "id": "website_required",
+      "label": "Site web requis",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Message"
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Label Message",
+      "default": "Message"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Placeholder Message",
+      "default": "Votre message..."
+    },
+    {
+      "type": "checkbox",
+      "id": "message_required",
+      "label": "Message requis",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Bouton"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Envoyer"
+    },
+    {
+      "type": "header",
+      "content": "Couleurs"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Couleur de fond",
+      "default": "#F6F4EF"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur d'accent",
+      "default": "#C6A45E"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Couleur primaire",
+      "default": "#173557"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#111111"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Modern Form",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

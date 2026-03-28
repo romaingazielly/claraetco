@@ -1,0 +1,528 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "text_6FnfgW": {
+          "type": "text",
+          "settings": {
+            "text": "Vivez une expérience sensorielle unique",
+            "text_style": "body"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Création d'émotions olfactives depuis 2017",
+            "heading_size": "h2"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Découvrir nos produits",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "text_6FnfgW",
+        "heading",
+        "button"
+      ],
+      "name": "Media banner",
+      "settings": {
+        "video": "shopify://files/videos/file.mp4",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "image_overlay_opacity": 0,
+        "image_height": "extra-small",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "featured_collection_carousel_bth8cL": {
+      "type": "featured-collection-carousel",
+      "name": "Collection Carousel",
+      "settings": {
+        "collection": "best-sellers",
+        "products_to_show": 8,
+        "title": "Best Sellers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "show_navigation": false,
+        "show_counter": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "best-sellers",
+        "products_to_show": 4,
+        "title": "Best Sellers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "slideshow_fEHJr7": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_WWNV4r": {
+          "type": "slide",
+          "settings": {
+            "image_overlay_opacity": 0,
+            "heading": "Diapositive (image)",
+            "heading_size": "h1",
+            "subheading": "Racontez votre histoire avec des images",
+            "button_label": "Texte du bouton",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_WWNV4r"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Diaporama sur votre marque"
+      }
+    },
+    "image_with_text_XJDkpA": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RyhGkx": {
+          "type": "heading",
+          "settings": {
+            "heading": "COLLECTION SIGNATURE.",
+            "heading_size": "h1"
+          }
+        },
+        "text_Xi8BxQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Quand l’artisanat d’exception rencontre l’élégance olfactive. Chaque bougie de cette collection est une pièce unique en verre soufflé.</p><p>Infusées de parfums élaborés à Grasse, ces créations vous transportent dans un univers propre à chacune.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_mr9qQz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Découvrir",
+            "button_link": "shopify://collections/signature",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RyhGkx",
+        "text_Xi8BxQ",
+        "button_mr9qQz"
+      ],
+      "name": "Collection Signature",
+      "settings": {
+        "image": "shopify://shop_images/eclatdeminuitburn.png",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "item_marquee_CUhALc": {
+      "type": "item-marquee",
+      "blocks": {
+        "item_8qHQ8K": {
+          "type": "item",
+          "name": "Vinciane esthétique",
+          "settings": {
+            "item_name": "Vinciane esthétique",
+            "image": "shopify://shop_images/Vinciane_esth_tique.png"
+          }
+        },
+        "item_7Vgw3X": {
+          "type": "item",
+          "name": "Kozelsky catering",
+          "settings": {
+            "item_name": "Kozelsky catering",
+            "image": "shopify://shop_images/kozelsky-catering.png"
+          }
+        },
+        "item_C6XHWK": {
+          "type": "item",
+          "name": "11-97.ch",
+          "settings": {
+            "item_name": "11-97.ch",
+            "image": "shopify://shop_images/11-97.ch.png"
+          }
+        },
+        "item_7m63mi": {
+          "type": "item",
+          "name": "Signature aviation",
+          "settings": {
+            "item_name": "Signature aviation",
+            "image": "shopify://shop_images/signature-aviation.png"
+          }
+        },
+        "item_QzEkcP": {
+          "type": "item",
+          "name": "Ariane Hotel",
+          "settings": {
+            "item_name": "Ariane Hotel",
+            "image": "shopify://shop_images/ariane-hotel.png"
+          }
+        },
+        "item_GCHMjg": {
+          "type": "item",
+          "name": "Les fils de Charles Favre",
+          "settings": {
+            "item_name": "Les fils de Charles Favre",
+            "image": "shopify://shop_images/les-fils-de-charles-favre.png"
+          }
+        },
+        "item_RphqEr": {
+          "type": "item",
+          "name": "M concept Immo",
+          "settings": {
+            "item_name": "M concept Immo",
+            "image": "shopify://shop_images/mconceptimmo.png"
+          }
+        },
+        "item_zQebzb": {
+          "type": "item",
+          "name": "Atmosphères",
+          "settings": {
+            "item_name": "Atmosphères",
+            "image": "shopify://shop_images/atmosphere.png"
+          }
+        },
+        "item_9LwKe4": {
+          "type": "item",
+          "name": "Lathion voyages",
+          "settings": {
+            "item_name": "Lathion voyages",
+            "image": "shopify://shop_images/lathion.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_8qHQ8K",
+        "item_7Vgw3X",
+        "item_C6XHWK",
+        "item_7m63mi",
+        "item_QzEkcP",
+        "item_GCHMjg",
+        "item_RphqEr",
+        "item_zQebzb",
+        "item_9LwKe4"
+      ],
+      "name": "Partenaires #1",
+      "settings": {
+        "heading": "Ils nous font confiance",
+        "heading_size": "h1",
+        "margin_top": 0,
+        "margin_bottom": 20,
+        "bg_color": "#f6f4ef",
+        "text_color": "#173557",
+        "row_height": 100,
+        "image_height": 100,
+        "direction": "left",
+        "scroll_speed": 30,
+        "image_gap": 60
+      }
+    },
+    "item_marquee_fURr6G": {
+      "type": "item-marquee",
+      "blocks": {
+        "item_mfYNWz": {
+          "type": "item",
+          "name": "Ô Sud",
+          "settings": {
+            "item_name": "Ô Sud",
+            "image": "shopify://shop_images/O_sud.png"
+          }
+        },
+        "item_VbtMc4": {
+          "type": "item",
+          "name": "Maison Gilliard",
+          "settings": {
+            "item_name": "Maison Gilliard",
+            "image": "shopify://shop_images/maison-gilliard.png"
+          }
+        },
+        "item_LCBMkk": {
+          "type": "item",
+          "name": "Barras associés sa",
+          "settings": {
+            "item_name": "Barras associés sa",
+            "image": "shopify://shop_images/barras-associe.png"
+          }
+        },
+        "item_GX7pYe": {
+          "type": "item",
+          "name": "Hangar 41",
+          "settings": {
+            "item_name": "Hangar 41",
+            "image": "shopify://shop_images/hangar-41-oenotheque.png"
+          }
+        },
+        "item_qYYkVC": {
+          "type": "item",
+          "name": "Sion Airport",
+          "settings": {
+            "item_name": "Sion Airport",
+            "image": "shopify://shop_images/sion-airport.png"
+          }
+        },
+        "item_Pb8BEj": {
+          "type": "item",
+          "name": "Morand",
+          "settings": {
+            "item_name": "Morand",
+            "image": "shopify://shop_images/morand.png"
+          }
+        },
+        "item_cHF7iB": {
+          "type": "item",
+          "name": "Evazion",
+          "settings": {
+            "item_name": "Evazion",
+            "image": "shopify://shop_images/Evazion.png"
+          }
+        },
+        "item_tfV9Wy": {
+          "type": "item",
+          "name": "Hugo reitzel",
+          "settings": {
+            "item_name": "Hugo reitzel",
+            "image": "shopify://shop_images/Hugo_reitzel.png"
+          }
+        },
+        "item_wXz8GQ": {
+          "type": "item",
+          "name": "Aigle Carmin",
+          "settings": {
+            "item_name": "Aigle Carmin",
+            "image": "shopify://shop_images/aigle-carmin.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_mfYNWz",
+        "item_VbtMc4",
+        "item_LCBMkk",
+        "item_GX7pYe",
+        "item_qYYkVC",
+        "item_Pb8BEj",
+        "item_cHF7iB",
+        "item_tfV9Wy",
+        "item_wXz8GQ"
+      ],
+      "name": "Partenaires #2",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "bg_color": "#f6f4ef",
+        "text_color": "#173557",
+        "row_height": 100,
+        "image_height": 100,
+        "direction": "right",
+        "scroll_speed": 30,
+        "image_gap": 60
+      }
+    },
+    "image_with_text_hnUJ8e": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jeFatq": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nos Valeurs",
+            "heading_size": "h1"
+          }
+        },
+        "text_QK6rD8": {
+          "type": "text",
+          "settings": {
+            "text": "<h3>Authenticité</h3><p>Nos produits, conçus avec soin, reflètent un savoir-faire artisanal et une véritable passion pour l'art de la création sensorielle. </p><h3>Qualité</h3><p>Nous maintenons un engagement à chaque étapes, des matières premières aux finitions.</p><h3>Engagement</h3><p>Nous adaptons une approche responsable et durable, en mettant un point d'honneur à répondre aux besoins de nos clients tout en respectant l'environnement.</p><h3>Innovation sensorielle</h3><p>Nous offrons des expériences olfactives et sensorielles inédites, en innovant constamment dans les parfums et les concepts.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_P9TwA8": {
+          "type": "button",
+          "settings": {
+            "button_label": "En savoir plus",
+            "button_link": "shopify://pages/mon-histoire",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_jeFatq",
+        "text_QK6rD8",
+        "button_P9TwA8"
+      ],
+      "custom_css": [
+        "h3:first-child {margin-top: 0;}",
+        "h3 {color: #173557; margin: 3rem 0 1rem 0;}",
+        "p {margin-left: 2rem; line-height: 2.2rem;}"
+      ],
+      "name": "Valeurs",
+      "settings": {
+        "image": "shopify://shop_images/Video_retouche_photo_site_internet.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_qFQydx": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JRGzMt": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_B8bMKX": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Développer une gamme spéciale avec un cahier des charges précis, créer un produit de A à Z , la seule limite est votre imagination.</p><p>Vous êtes professionnel et vous souhaitez faire appel à notre savoir faire ?​</p>"
+          }
+        },
+        "button_JppERz": {
+          "type": "button",
+          "settings": {
+            "button_label": "Contactez-nous",
+            "button_link": "shopify://pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "image_mNn8ga": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/contact-clara-and-co.webp",
+            "image_caption": "",
+            "image_size": "large"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JRGzMt",
+        "text_B8bMKX",
+        "button_JppERz",
+        "image_mNn8ga"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "image_banner",
+    "featured_collection_carousel_bth8cL",
+    "featured_collection",
+    "slideshow_fEHJr7",
+    "image_with_text_XJDkpA",
+    "item_marquee_CUhALc",
+    "item_marquee_fURr6G",
+    "image_with_text_hnUJ8e",
+    "rich_text_qFQydx"
+  ]
+}

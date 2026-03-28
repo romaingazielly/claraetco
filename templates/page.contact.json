@@ -1,0 +1,115 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "name_MprYmN": {
+          "type": "name",
+          "settings": {
+            "label": "Nom, Prénom",
+            "required": true,
+            "half_width": true
+          }
+        },
+        "phone_zx3dCT": {
+          "type": "phone",
+          "settings": {
+            "label": "Téléphone",
+            "required": true,
+            "half_width": false
+          }
+        },
+        "email_PkcRCf": {
+          "type": "email",
+          "settings": {
+            "label": "Email",
+            "half_width": false
+          }
+        },
+        "message_fVPKRE": {
+          "type": "message",
+          "settings": {
+            "label": "Message",
+            "rows": 10,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "name_MprYmN",
+        "phone_zx3dCT",
+        "email_PkcRCf",
+        "message_fVPKRE"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "button_label": "Envoyer",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_adNxwC": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VhnJTe": {
+          "type": "heading",
+          "settings": {
+            "heading": "Passez nous voir",
+            "heading_size": "h2"
+          }
+        },
+        "text_HdPChe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Retrouvez nous dans notre atelier, uniquement sur rendez-vous au :</p><p>Rue des Aprages 16, 1957 Ardon</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VhnJTe",
+        "text_HdPChe"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/Gemini_Generated_Image_4yyb9s4yyb9s4yyb.png",
+        "height": "small",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "form",
+    "image_with_text_adNxwC"
+  ]
+}

@@ -1,0 +1,432 @@
+/* ============================================
+   MODERN FORM SECTION - Clara&Co. Inspired
+   ============================================ */
+
+.modern-form-section {
+  --form-primary: #173557;
+  --form-primary-dark: #0B1A2A;
+  --form-accent: #C6A45E;
+  --form-accent-light: rgba(198, 164, 94, 0.10);
+  --form-bg: #F6F4EF;
+  --form-white: #FFFFFF;
+  --form-text: #111111;
+  --form-text-muted: #8E8E8E;
+  --form-border-light: rgba(23, 53, 87, 0.10);
+  --form-border-medium: rgba(23, 53, 87, 0.18);
+  --form-radius: 10px;
+  --form-spacing-xs: 0.5rem;
+  --form-spacing-sm: 1rem;
+  --form-spacing-md: 2rem;
+  --form-spacing-lg: 3rem;
+  --form-spacing-xl: 4rem;
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--form-bg);
+}
+
+/* Override colors if set in theme customizer */
+.modern-form-section[style*="--background-color"] {
+  background: var(--background-color);
+}
+
+.modern-form-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--form-spacing-md);
+}
+
+/* ============================================
+   GRID LAYOUT
+   ============================================ */
+
+.modern-form__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--form-spacing-xl);
+  align-items: start;
+}
+
+@media (max-width: 991px) {
+  .modern-form__inner {
+    grid-template-columns: 1fr;
+    gap: var(--form-spacing-lg);
+  }
+}
+
+/* ============================================
+   LEFT SIDE: INTRODUCTION
+   ============================================ */
+
+.modern-form__intro {
+  position: sticky;
+  top: 100px;
+}
+
+@media (max-width: 991px) {
+  .modern-form__intro {
+    position: static;
+  }
+}
+
+.modern-form__label {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--form-accent);
+  margin-bottom: var(--form-spacing-sm);
+}
+
+.modern-form__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--form-primary);
+  margin-bottom: var(--form-spacing-md);
+}
+
+.modern-form__title em {
+  font-style: italic;
+  color: var(--form-primary-dark);
+}
+
+.modern-form__divider {
+  width: 60px;
+  height: 1px;
+  background: var(--form-accent);
+  margin: var(--form-spacing-lg) 0;
+  opacity: 0.6;
+}
+
+.modern-form__description {
+  color: var(--form-text);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: var(--form-spacing-md);
+}
+
+.modern-form__description p {
+  margin-bottom: var(--form-spacing-sm);
+}
+
+.modern-form__quote {
+  position: relative;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--form-primary);
+  padding: var(--form-spacing-md);
+  padding-left: var(--form-spacing-lg);
+  border-left: 2px solid var(--form-accent);
+  background: var(--form-accent-light);
+  border-radius: 0 var(--form-radius) var(--form-radius) 0;
+  margin: var(--form-spacing-md) 0;
+}
+
+.modern-form__note {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--form-text-muted);
+  margin-top: var(--form-spacing-md);
+}
+
+/* ============================================
+   RIGHT SIDE: FORM
+   ============================================ */
+
+.modern-form__form-wrapper {
+  background: var(--form-white);
+  border: 1px solid var(--form-border-light);
+  border-radius: var(--form-radius);
+  padding: var(--form-spacing-xl);
+  box-shadow: 0 4px 30px rgba(23, 53, 87, 0.04);
+}
+
+@media (max-width: 767px) {
+  .modern-form__form-wrapper {
+    padding: var(--form-spacing-md);
+  }
+}
+
+.modern-form__form-title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: var(--form-primary-dark);
+  margin-bottom: var(--form-spacing-lg);
+  padding-bottom: var(--form-spacing-md);
+  border-bottom: 1px solid var(--form-border-light);
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+.modern-form__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-spacing-md);
+}
+
+.modern-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--form-spacing-md);
+}
+
+@media (max-width: 767px) {
+  .modern-form__row {
+    grid-template-columns: 1fr;
+    gap: var(--form-spacing-md);
+  }
+}
+
+.modern-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modern-form__group label {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--form-primary);
+}
+
+.modern-form__group label .required {
+  color: var(--form-accent);
+  margin-left: 2px;
+}
+
+.modern-form__group input[type="text"],
+.modern-form__group input[type="email"],
+.modern-form__group input[type="tel"],
+.modern-form__group input[type="url"],
+.modern-form__group select,
+.modern-form__group textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 14px 18px;
+  background: var(--form-white);
+  border: 1px solid var(--form-border-medium);
+  border-radius: var(--form-radius);
+  color: var(--form-text);
+  transition: all 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.modern-form__group input[type="text"]:focus,
+.modern-form__group input[type="email"]:focus,
+.modern-form__group input[type="tel"]:focus,
+.modern-form__group input[type="url"]:focus,
+.modern-form__group select:focus,
+.modern-form__group textarea:focus {
+  outline: none;
+  border-color: var(--form-primary);
+  box-shadow: 0 0 0 3px rgba(23, 53, 87, 0.08);
+}
+
+.modern-form__group input::placeholder,
+.modern-form__group textarea::placeholder {
+  color: var(--form-text-muted);
+  opacity: 0.6;
+}
+
+/* Select styling */
+.modern-form__group select {
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23173557' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+  padding-right: 48px;
+  cursor: pointer;
+}
+
+.modern-form__group select option {
+  padding: 10px;
+}
+
+/* Textarea */
+.modern-form__group textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
+.modern-form__submit {
+  margin-top: var(--form-spacing-sm);
+}
+
+.modern-form__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  background: var(--form-primary);
+  color: var(--form-white);
+  border: 2px solid var(--form-primary);
+  border-radius: var(--form-radius);
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.modern-form__button:hover {
+  background: var(--form-primary-dark);
+  border-color: var(--form-primary-dark);
+  box-shadow: 0 0 0 1px var(--form-accent);
+  transform: translateY(-1px);
+}
+
+.modern-form__button svg {
+  transition: transform 0.3s ease;
+}
+
+.modern-form__button:hover svg {
+  transform: translateX(4px);
+}
+
+.modern-form__button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   SUCCESS & ERROR MESSAGES
+   ============================================ */
+
+.modern-form__success-message,
+.modern-form__error-message {
+  display: flex;
+  align-items: start;
+  gap: var(--form-spacing-sm);
+  padding: var(--form-spacing-md);
+  border-radius: var(--form-radius);
+  margin-bottom: var(--form-spacing-md);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modern-form__success-message {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  color: #166534;
+}
+
+.modern-form__success-message svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: #22c55e;
+  margin-top: 2px;
+}
+
+.modern-form__error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #991b1b;
+}
+
+.modern-form__error-message::before {
+  content: '⚠';
+  flex-shrink: 0;
+  font-size: 20px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modern-form__intro,
+.modern-form__form-wrapper {
+  animation: fadeUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.modern-form__form-wrapper {
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.modern-form__intro {
+  opacity: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .modern-form-section {
+    padding: clamp(60px, 8vw, 80px) 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .modern-form__title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+  
+  .modern-form__quote {
+    font-size: 16px;
+    padding: var(--form-spacing-sm);
+    padding-left: var(--form-spacing-md);
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.modern-form__group input:focus-visible,
+.modern-form__group select:focus-visible,
+.modern-form__group textarea:focus-visible,
+.modern-form__button:focus-visible {
+  outline: 2px solid var(--form-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   CUSTOM COLOR OVERRIDE
+   (for theme customizer settings)
+   ============================================ */
+
+.modern-form-section[style*="--accent-color"] {
+  --form-accent: var(--accent-color);
+}
+
+.modern-form-section[style*="--primary-color"] {
+  --form-primary: var(--primary-color);
+}
+
+.modern-form-section[style*="--text-color"] {
+  --form-text: var(--text-color);
+}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_Nwajyp": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cxYyLx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Mon Histoire",
+            "heading_size": "h1"
+          }
+        },
+        "text_46UapE": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>VOICI CLARA</h2><p>Clara est une entrepreneuse passionnée par la création de produits sensoriels, son parcours professionnel plutôt atypique lui confère une créativité et une expertise hors du commun.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_Dc8fYz": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_cxYyLx",
+        "text_46UapE",
+        "button_Dc8fYz"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/1751099422169.png",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_HcTNmE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WULz7y": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_pegh4X": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Elle développe une approche holistique de la création de produits, en intégrant les exigences et les préférences de chaque client dans le processus de création.</p><p>Grâce à son talent, son savoir faire et sa passion, elle acquiert rapidement  une clientèle fidèle et satisfaite.</p><p>Clara continue de travailler avec dévouement pour offrir des gammes de produit  innovants et personnalisés, tout en restant fidèle à ses valeurs d'authenticité, de qualité et d'engagement.</p><p>Aujourd'hui, Clara&Co. continue de grandir et devient une entreprise respectée dans le domaine du développement olfactif.</p>"
+          }
+        },
+        "button_inhmxN": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_WULz7y",
+        "text_pegh4X",
+        "button_inhmxN"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_Nwajyp",
+    "rich_text_HcTNmE"
+  ]
+}

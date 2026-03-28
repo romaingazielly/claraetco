@@ -1,0 +1,503 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- else -%}
+      <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
+    {%- endif -%}
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          {{ 'templates.contact.form.post_success' | t }}
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+      
+      {%- liquid
+        assign previous_half_width = false
+      -%}
+      
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign current_half_width = block.settings.half_width
+          assign open_wrapper = false
+          assign close_wrapper = false
+          
+          if current_half_width and previous_half_width == false
+            assign open_wrapper = true
+          endif
+          
+          if current_half_width == false and previous_half_width
+            assign close_wrapper = true
+          endif
+          
+          if forloop.last and current_half_width
+            assign close_wrapper = true
+          endif
+        -%}
+        
+        {%- if open_wrapper -%}
+          <div class="contact__fields">
+        {%- endif -%}
+        
+        {%- case block.type -%}
+          
+          {%- when 'name' -%}
+            <div class="field" {{ block.shopify_attributes }}>
+              <input
+                class="field__input"
+                autocomplete="name"
+                type="text"
+                id="ContactForm-name"
+                name="contact[{{ block.settings.label }}]"
+                value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+                placeholder="{{ block.settings.label }}"
+                {% if block.settings.required %}required{% endif %}
+              >
+              <label class="field__label" for="ContactForm-name">
+                {{ block.settings.label }}
+                {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+              </label>
+            </div>
+          
+          {%- when 'email' -%}
+            <div class="field field--with-error" {{ block.shopify_attributes }}>
+              <input
+                autocomplete="email"
+                type="email"
+                id="ContactForm-email"
+                class="field__input"
+                name="contact[email]"
+                spellcheck="false"
+                autocapitalize="off"
+                value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                aria-required="true"
+                {% if form.errors contains 'email' %}
+                  aria-invalid="true"
+                  aria-describedby="ContactForm-email-error"
+                {% endif %}
+                placeholder="{{ block.settings.label }}"
+                required
+              >
+              <label class="field__label" for="ContactForm-email">
+                {{ block.settings.label }}
+                <span aria-hidden="true">*</span>
+              </label>
+              {%- if form.errors contains 'email' -%}
+                <small class="contact__field-error" id="ContactForm-email-error">
+                  <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+                  <span class="form__message">
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email -}}
+                  </span>
+                </small>
+              {%- endif -%}
+            </div>
+          
+          {%- when 'phone' -%}
+            <div class="field" {{ block.shopify_attributes }}>
+              <input
+                type="tel"
+                id="ContactForm-phone"
+                class="field__input"
+                autocomplete="tel"
+                name="contact[{{ block.settings.label }}]"
+                pattern="[0-9\-]*"
+                value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                placeholder="{{ block.settings.label }}"
+                {% if block.settings.required %}required{% endif %}
+              >
+              <label class="field__label" for="ContactForm-phone">
+                {{ block.settings.label }}
+                {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+              </label>
+            </div>
+          
+          {%- when 'company' -%}
+            <div class="field" {{ block.shopify_attributes }}>
+              <input
+                type="text"
+                id="ContactForm-company"
+                class="field__input"
+                autocomplete="organization"
+                name="contact[{{ block.settings.label }}]"
+                value="{% if form[block.settings.label] %}{{ form[block.settings.label] }}{% endif %}"
+                placeholder="{{ block.settings.label }}"
+                {% if block.settings.required %}required{% endif %}
+              >
+              <label class="field__label" for="ContactForm-company">
+                {{ block.settings.label }}
+                {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+              </label>
+            </div>
+          
+          {%- when 'text_field' -%}
+            <div class="field" {{ block.shopify_attributes }}>
+              {%- if block.settings.multiline -%}
+                <textarea
+                  rows="{{ block.settings.rows }}"
+                  id="ContactForm-{{ block.id }}"
+                  class="text-area field__input"
+                  name="contact[{{ block.settings.label }}]"
+                  placeholder="{{ block.settings.label }}"
+                  {% if block.settings.required %}required{% endif %}
+                >
+                  {{- form[block.settings.label] -}}
+                </textarea>
+                <label class="form__label field__label" for="ContactForm-{{ block.id }}">
+                  {{ block.settings.label }}
+                  {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+                </label>
+              {%- else -%}
+                <input
+                  type="text"
+                  id="ContactForm-{{ block.id }}"
+                  class="field__input"
+                  name="contact[{{ block.settings.label }}]"
+                  value="{% if form[block.settings.label] %}{{ form[block.settings.label] }}{% endif %}"
+                  placeholder="{{ block.settings.label }}"
+                  {% if block.settings.required %}required{% endif %}
+                >
+                <label class="field__label" for="ContactForm-{{ block.id }}">
+                  {{ block.settings.label }}
+                  {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+                </label>
+              {%- endif -%}
+            </div>
+          
+          {%- when 'message' -%}
+            <div class="field" {{ block.shopify_attributes }}>
+              <textarea
+                rows="{{ block.settings.rows }}"
+                id="ContactForm-body"
+                class="text-area field__input"
+                name="contact[{{ block.settings.label }}]"
+                placeholder="{{ block.settings.label }}"
+                {% if block.settings.required %}required{% endif %}
+              >
+                {{- form.body -}}
+              </textarea>
+              <label class="form__label field__label" for="ContactForm-body">
+                {{ block.settings.label }}
+                {% if block.settings.required %}<span aria-hidden="true">*</span>{% endif %}
+              </label>
+            </div>
+          
+        {%- endcase -%}
+        
+        {%- if close_wrapper -%}
+          </div>
+        {%- endif -%}
+        
+        {%- assign previous_half_width = current_half_width -%}
+      {%- endfor -%}
+      
+      <div class="contact__button">
+        <button type="submit" class="button">
+          {{ section.settings.button_label }}
+        </button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.contact-form.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "t:sections.contact-form.settings.title.default",
+      "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "t:sections.all.heading_size.options__1.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.heading_size.options__2.label"
+        },
+        {
+          "value": "h0",
+          "label": "t:sections.all.heading_size.options__3.label"
+        },
+        {
+          "value": "hxl",
+          "label": "t:sections.all.heading_size.options__4.label"
+        },
+        {
+          "value": "hxxl",
+          "label": "t:sections.all.heading_size.options__5.label"
+        }
+      ],
+      "default": "h1",
+      "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Envoyer"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "name",
+      "name": "Nom",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Nom"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Champ obligatoire",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "half_width",
+          "label": "Demi-largeur (2 champs côte à côte)",
+          "default": false,
+          "info": "Activez cette option sur 2 champs consécutifs pour les afficher côte à côte"
+        }
+      ]
+    },
+    {
+      "type": "email",
+      "name": "Email",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Email"
+        },
+        {
+          "type": "checkbox",
+          "id": "half_width",
+          "label": "Demi-largeur (2 champs côte à côte)",
+          "default": false,
+          "info": "Activez cette option sur 2 champs consécutifs pour les afficher côte à côte"
+        },
+        {
+          "type": "paragraph",
+          "content": "Le champ email est toujours obligatoire"
+        }
+      ]
+    },
+    {
+      "type": "phone",
+      "name": "Téléphone",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Téléphone"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Champ obligatoire",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "half_width",
+          "label": "Demi-largeur (2 champs côte à côte)",
+          "default": false,
+          "info": "Activez cette option sur 2 champs consécutifs pour les afficher côte à côte"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "name": "Entreprise",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Entreprise"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Champ obligatoire",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "half_width",
+          "label": "Demi-largeur (2 champs côte à côte)",
+          "default": false,
+          "info": "Activez cette option sur 2 champs consécutifs pour les afficher côte à côte"
+        }
+      ]
+    },
+    {
+      "type": "text_field",
+      "name": "Champ texte personnalisé",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Votre champ"
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Champ obligatoire",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "half_width",
+          "label": "Demi-largeur (2 champs côte à côte)",
+          "default": false,
+          "info": "Activez cette option sur 2 champs consécutifs pour les afficher côte à côte"
+        }
+      ]
+    },
+    {
+      "type": "message",
+      "name": "Message",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label du champ",
+          "default": "Message"
+        },
+        {
+          "type": "range",
+          "id": "rows",
+          "label": "Nombre de lignes",
+          "min": 3,
+          "max": 15,
+          "step": 1,
+          "default": 10
+        },
+        {
+          "type": "checkbox",
+          "id": "required",
+          "label": "Champ obligatoire",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.contact-form.presets.name",
+      "blocks": [
+        {
+          "type": "name"
+        },
+        {
+          "type": "email"
+        },
+        {
+          "type": "phone"
+        },
+        {
+          "type": "message"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

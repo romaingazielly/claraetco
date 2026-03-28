@@ -1,0 +1,443 @@
+/* ============================================
+   TIMELINE SECTION - Clara&Co. Process Style
+   ============================================ */
+
+.timeline-section {
+  --timeline-bg: #0B1A2A;
+  --timeline-primary: #F6F4EF;
+  --timeline-accent: #C6A45E;
+  --timeline-text: #F6F4EF;
+  --timeline-text-muted: rgba(246, 244, 239, 0.45);
+  --timeline-accent-border: rgba(198, 164, 94, 0.35);
+  --timeline-accent-line: rgba(198, 164, 94, 0.2);
+  --timeline-accent-10: rgba(198, 164, 94, 0.10);
+  --timeline-radius: 10px;
+  --timeline-spacing-xs: 0.5rem;
+  --timeline-spacing-sm: 1rem;
+  --timeline-spacing-md: 2rem;
+  --timeline-spacing-lg: 3rem;
+  --timeline-spacing-xl: 4rem;
+  padding: clamp(80px, 10vw, 120px) 0;
+  background: var(--timeline-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--timeline-spacing-md);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+
+.timeline__header {
+  text-align: center;
+  margin-bottom: var(--timeline-spacing-xl);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.timeline__label {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--timeline-accent);
+  margin-bottom: var(--timeline-spacing-sm);
+}
+
+.timeline__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  color: var(--timeline-primary);
+  margin-bottom: var(--timeline-spacing-md);
+}
+
+.timeline__title em {
+  font-style: italic;
+  color: var(--timeline-primary);
+}
+
+.timeline__description {
+  max-width: 700px;
+  margin: var(--timeline-spacing-md) auto 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--timeline-text-muted);
+}
+
+.timeline__description p {
+  margin-bottom: var(--timeline-spacing-sm);
+}
+
+/* ============================================
+   TIMELINE STEPS GRID
+   ============================================ */
+
+.timeline__steps {
+  display: grid;
+  gap: 0;
+  position: relative;
+}
+
+/* Connecting line between steps (desktop only) */
+.timeline__steps::before {
+  content: '';
+  position: absolute;
+  top: 26px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--timeline-accent-line);
+  z-index: 0;
+}
+
+/* Grid variations */
+.timeline__steps--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.timeline__steps--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.timeline__steps--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.timeline__steps--6 {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+/* ============================================
+   TIMELINE STEP
+   ============================================ */
+
+.timeline-step {
+  text-align: center;
+  padding: 0 var(--timeline-spacing-sm);
+  position: relative;
+  animation: fadeUp 0.7s ease forwards;
+  animation-delay: calc(var(--step-index, 0) * 0.1s);
+  opacity: 0;
+}
+
+/* Stagger animation delays */
+.timeline-step:nth-child(1) { animation-delay: 0.1s; }
+.timeline-step:nth-child(2) { animation-delay: 0.2s; }
+.timeline-step:nth-child(3) { animation-delay: 0.3s; }
+.timeline-step:nth-child(4) { animation-delay: 0.4s; }
+.timeline-step:nth-child(5) { animation-delay: 0.5s; }
+.timeline-step:nth-child(6) { animation-delay: 0.6s; }
+
+.timeline-step__number {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--timeline-accent-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--timeline-spacing-md);
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  color: var(--timeline-accent);
+  background: var(--timeline-bg);
+  position: relative;
+  z-index: 1;
+  transition: all 0.35s ease;
+}
+
+.timeline-step:hover .timeline-step__number {
+  background: var(--timeline-accent);
+  color: var(--timeline-bg);
+  border-color: var(--timeline-accent);
+  transform: scale(1.08);
+  box-shadow: 0 4px 20px rgba(198, 164, 94, 0.3);
+}
+
+.timeline-step__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--timeline-primary);
+  margin-bottom: var(--timeline-spacing-xs);
+  line-height: 1.4;
+  min-height: 2.8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-step__desc {
+  font-size: 13px;
+  color: var(--timeline-text-muted);
+  line-height: 1.65;
+  min-height: 3.3em;
+}
+
+.timeline-step__icon {
+  margin-top: var(--timeline-spacing-sm);
+  font-size: 18px;
+  color: var(--timeline-accent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.timeline-step:hover .timeline-step__icon {
+  opacity: 1;
+}
+
+/* ============================================
+   CTA BUTTON
+   ============================================ */
+
+.timeline__cta {
+  text-align: center;
+  margin-top: var(--timeline-spacing-xl);
+  animation: fadeUp 0.7s 0.7s ease forwards;
+  opacity: 0;
+}
+
+.timeline__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  background: var(--timeline-primary);
+  color: var(--timeline-bg);
+  border: 2px solid var(--timeline-primary);
+  border-radius: var(--timeline-radius);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+
+.timeline__button:hover {
+  background: var(--timeline-accent);
+  border-color: var(--timeline-accent);
+  color: var(--timeline-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(198, 164, 94, 0.25);
+}
+
+.timeline__button svg {
+  transition: transform 0.3s ease;
+}
+
+.timeline__button:hover svg {
+  transform: translateX(4px);
+}
+
+.timeline__button:active {
+  transform: translateY(0);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+
+@media (max-width: 1024px) {
+  /* 5 & 6 columns become 3 */
+  .timeline__steps--5,
+  .timeline__steps--6 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--timeline-spacing-md);
+    row-gap: var(--timeline-spacing-lg);
+  }
+
+  /* 4 columns stay at 4 on tablet */
+  .timeline__steps--4 {
+    gap: var(--timeline-spacing-sm);
+    row-gap: var(--timeline-spacing-lg);
+  }
+
+  /* Hide connecting line on tablet */
+  .timeline__steps::before {
+    display: none;
+  }
+
+  .timeline-step {
+    padding: 0 var(--timeline-spacing-xs);
+  }
+
+  .timeline-step__title {
+    font-size: 16px;
+  }
+
+  .timeline-step__desc {
+    font-size: 12px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: clamp(60px, 8vw, 80px) 0;
+  }
+
+  /* All grids become 2 columns on mobile */
+  .timeline__steps--3,
+  .timeline__steps--4,
+  .timeline__steps--5,
+  .timeline__steps--6 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--timeline-spacing-md);
+    row-gap: var(--timeline-spacing-lg);
+  }
+
+  .timeline__title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .timeline-step__number {
+    width: 48px;
+    height: 48px;
+    font-size: 15px;
+    margin-bottom: var(--timeline-spacing-sm);
+  }
+
+  .timeline-step__title {
+    font-size: 15px;
+    min-height: auto;
+  }
+
+  .timeline-step__desc {
+    font-size: 12px;
+    min-height: auto;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - EXTRA SMALL
+   ============================================ */
+
+@media (max-width: 480px) {
+  /* All grids become 1 column on very small screens */
+  .timeline__steps--3,
+  .timeline__steps--4,
+  .timeline__steps--5,
+  .timeline__steps--6 {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: var(--timeline-spacing-lg);
+  }
+
+  .timeline-step {
+    padding: 0;
+  }
+
+  .timeline__button {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+.timeline-step:focus-within .timeline-step__number {
+  outline: 2px solid var(--timeline-accent);
+  outline-offset: 3px;
+}
+
+.timeline__button:focus-visible {
+  outline: 2px solid var(--timeline-primary);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS (OPTIONAL)
+   ============================================ */
+
+/* Optional: Add subtle background pattern */
+.timeline-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(198, 164, 94, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Optional: Glow effect */
+.timeline-section::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(198, 164, 94, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .timeline-section {
+    background: white;
+    color: black;
+  }
+
+  .timeline__steps::before {
+    background: #ccc;
+  }
+
+  .timeline-step__number {
+    border-color: #ccc;
+    background: white;
+  }
+
+  .timeline__button {
+    display: none;
+  }
+}

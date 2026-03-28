@@ -1,0 +1,274 @@
+.product-tabs {
+  width: 100%;
+}
+
+.tabs-header {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.15);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.tabs-header::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 1.125rem 2rem;
+  font-size: 1.0625rem;
+  font-weight: 400;
+  color: rgba(var(--color-foreground), 0.6);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: var(--font-heading-family);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+  outline: none;
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgb(var(--color-foreground));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tab-button:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.tab-button.active {
+  color: rgb(var(--color-foreground));
+  font-weight: 500;
+}
+
+.tab-button.active::after {
+  transform: scaleX(1);
+}
+
+.tabs-content {
+  position: relative;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-content-inner {
+  padding: 0.5rem 0 0;
+  line-height: 1.6;
+}
+
+.tab-content-inner h2,
+.tab-content-inner h3,
+.tab-content-inner h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner h2:first-child,
+.tab-content-inner h3:first-child,
+.tab-content-inner h4:first-child {
+  margin-top: 0;
+}
+
+.tab-content-inner p {
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner ul,
+.tab-content-inner ol {
+  margin-left: 0;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner li {
+  margin-bottom: 0.5rem;
+}
+
+.tab-content-inner table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.tab-content-inner table th,
+.tab-content-inner table td {
+  padding: 0.75rem;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  text-align: left;
+}
+
+.tab-content-inner table th {
+  background-color: rgba(var(--color-foreground), 0.05);
+  font-weight: 600;
+}
+
+.tab-content-inner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.placeholder-text {
+  padding: 3rem;
+  text-align: center;
+  color: rgba(var(--color-foreground), 0.5);
+  border: 2px dashed rgba(var(--color-foreground), 0.2);
+  border-radius: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tabs-content {
+  position: relative;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.tab-content-inner {
+  padding: 1rem 0;
+  line-height: 1.6;
+}
+
+.tab-content-inner h2,
+.tab-content-inner h3,
+.tab-content-inner h4 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner p {
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner ul,
+.tab-content-inner ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-content-inner table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.tab-content-inner table th,
+.tab-content-inner table td {
+  padding: 0.75rem;
+  border: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+.tab-content-inner table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.tab-content-inner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem 0;
+}
+
+.placeholder-text {
+  padding: 3rem;
+  text-align: center;
+  color: #999;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 749px) {
+  .product-tabs-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .tabs-header {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .tab-button {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9375rem;
+    letter-spacing: 0.03em;
+  }
+
+  .tab-button:first-child {
+    padding-left: 0;
+  }
+
+  .tab-content-inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.25rem;
+  }
+
+  /* Correction des listes sur mobile - pas de décalage */
+  .tab-content-inner ul,
+  .tab-content-inner ol {
+    margin-left: 0;
+    padding-left: 1.125rem;
+  }
+
+  /* Ajustement des tableaux sur mobile */
+  .tab-content-inner table {
+    font-size: 0.875rem;
+  }
+
+  .tab-content-inner table th,
+  .tab-content-inner table td {
+    padding: 0.5rem;
+  }
+}

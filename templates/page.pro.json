@@ -1,0 +1,307 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_whQ3aG": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_zkqpPM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Marketing olfactif",
+            "heading_size": "h1"
+          }
+        },
+        "text_8CH6W7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sublimez vos espaces, créez des émotions durables</p><h3>L’expérience sensorielle signée Clara & Co.</h3><p>Parce que chaque lieu mérite une identité sensorielle unique, Clara&Co. vous propose des solutions de diffusion haut de gamme pensées pour les professionnels. Créez une atmosphère mémorable qui marque les esprits et valorise votre image de marque.</p><h3></h3>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zkqpPM",
+        "text_8CH6W7"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/2.png",
+        "height": "medium",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_NinzAh": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ViHVFm": {
+          "type": "column",
+          "settings": {
+            "title": "La nébulisation à froid",
+            "text": "<ul><li>Diffusion pure sans chaleur, ni eau</li><li>Idéale pour les grandes surfaces (jusqu’à 3500 m²)</li><li>Programmable, silencieuse et puissante</li><li>Compatible avec nos parfums ou nos créations sur mesure</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_FfD6dw": {
+          "type": "column",
+          "settings": {
+            "title": "La diffusion par capilla",
+            "text": "<ul><li>Élégante, discrète, sans électricité</li><li>Parfaite pour les zones d’accueil, salles d’attente ou bureaux</li><li>Diffusion douce et continue jusqu’à 6 semaines</li><li>Personnalisable avec votre identité visuel.</li></ul>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_ViHVFm",
+        "column_FfD6dw"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Nos technologies de diffusion",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 2,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_TVrgnG": {
+      "type": "rich-text",
+      "blocks": {
+        "caption_iGyBFr": {
+          "type": "caption",
+          "settings": {
+            "caption": "Un parfum bien choisi devient une signature invisible qui fidélise vos clients.",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        }
+      },
+      "block_order": [
+        "caption_iGyBFr"
+      ],
+      "name": "Caption",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "rich_text_BE9BBn": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JBtdxD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pour qui ?",
+            "heading_size": "h2"
+          }
+        },
+        "text_Q3Eybe": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nos diffuseurs s’adressent à tous les professionnels soucieux de l’expérience client :</p><ul><li>Hôtels & spas</li><li>Boutiques & concept stores</li><li>Cabinets & salles d’attente</li><li>Espaces de coworking</li><li>Entreprises & bureaux</li><li>Salles de sport et yoga</li></ul>"
+          }
+        },
+        "separator_x8K4Gi": {
+          "type": "separator",
+          "settings": {
+            "width": "full",
+            "style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JBtdxD",
+        "text_Q3Eybe",
+        "separator_x8K4Gi"
+      ],
+      "name": "Pour qui",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_ddjX6K": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_MbdJWd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Développement olfactif sur mesure",
+            "heading_size": "h2"
+          }
+        },
+        "text_dGgRrW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Vous rêvez d’un parfum exclusif, pensé pour votre marque ou votre établissement ?Clara&Co. vous accompagne dans toutes les étapes de création :</p><ul><li>Brief olfactif personnalisé</li><li>Développement de votre fragrance signature</li><li>Tests, ajustements & production</li><li>Installation et suivi</li></ul>"
+          }
+        },
+        "separator_x9m3dK": {
+          "type": "separator",
+          "settings": {
+            "width": "full",
+            "style": "solid"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MbdJWd",
+        "text_dGgRrW",
+        "separator_x9m3dK"
+      ],
+      "name": "Développement olfactif sur mesure",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_igQ4N4": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BcTJjF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pourquoi Clara&Co. ?",
+            "heading_size": "h2"
+          }
+        },
+        "text_EBjPNn": {
+          "type": "text",
+          "settings": {
+            "text": "<ul><li>Expertise en création sensorielle</li><li>Fragrances naturelles, sûres et subtiles</li><li>Production artisanale et suisse</li><li> Accompagnement personnalisé de A à Z</li><li> Esthétique raffinée, en harmonie avec vos espaces</li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BcTJjF",
+        "text_EBjPNn"
+      ],
+      "name": "Pourquoi Clara&Co.?",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 20,
+        "padding_bottom": 40
+      }
+    },
+    "form": {
+      "type": "contact-form",
+      "blocks": {
+        "name_rzFjHB": {
+          "type": "name",
+          "settings": {
+            "label": "Nom, Prénom",
+            "required": true,
+            "half_width": true
+          }
+        },
+        "phone_YEGdrH": {
+          "type": "phone",
+          "settings": {
+            "label": "Téléphone",
+            "required": true,
+            "half_width": false
+          }
+        },
+        "company_UYXaLa": {
+          "type": "company",
+          "settings": {
+            "label": "Entreprise",
+            "required": false,
+            "half_width": true
+          }
+        },
+        "email_D3hih4": {
+          "type": "email",
+          "settings": {
+            "label": "Email",
+            "half_width": false
+          }
+        },
+        "message_kQRmPk": {
+          "type": "message",
+          "settings": {
+            "label": "Message",
+            "rows": 10,
+            "required": false
+          }
+        }
+      },
+      "block_order": [
+        "name_rzFjHB",
+        "phone_YEGdrH",
+        "company_UYXaLa",
+        "email_D3hih4",
+        "message_kQRmPk"
+      ],
+      "settings": {
+        "heading": "Laissez nous vos coordonnés",
+        "heading_size": "h2",
+        "button_label": "Envoyer",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_whQ3aG",
+    "multicolumn_NinzAh",
+    "rich_text_TVrgnG",
+    "rich_text_BE9BBn",
+    "rich_text_ddjX6K",
+    "rich_text_igQ4N4",
+    "form"
+  ]
+}

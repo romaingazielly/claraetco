@@ -1,0 +1,177 @@
+{{ 'product-multi-select.css' | asset_url | stylesheet_tag }}
+
+<style>
+  :root {
+    --ms-accent: {{ section.settings.accent_color | default: '#2c6e49' }};
+    --ms-accent-light: {{ section.settings.accent_color | default: '#2c6e49' }}1a;
+    --ms-bg: #fafaf8;
+    --ms-card-bg: #ffffff;
+    --ms-border: #e2e0dc;
+    --ms-text: #1a1a1a;
+    --ms-text-muted: #6b6963;
+    --ms-radius: 12px;
+    --ms-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    --ms-shadow-hover: 0 8px 25px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.06);
+    --ms-transition: .25s cubic-bezier(.4,0,.2,1);
+  }
+</style>
+
+<div class="ms-product">
+  <div class="ms-product__layout">
+
+    {%- comment -%} ── Image Gallery ── {%- endcomment -%}
+    <div class="ms-gallery">
+      <div class="ms-gallery__main">
+        {%- if product.featured_image -%}
+          <img
+            id="msMainImage"
+            src="{{ product.featured_image | image_url: width: 1200 }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            width="1200"
+            height="{{ 1200 | divided_by: product.featured_image.aspect_ratio | round }}"
+            loading="eager"
+          >
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+      {%- if product.images.size > 1 -%}
+        <div class="ms-gallery__thumbs">
+          {%- for image in product.images -%}
+            <button
+              class="ms-gallery__thumb {% if forloop.first %}is-active{% endif %}"
+              data-full-src="{{ image | image_url: width: 1200 }}"
+              data-alt="{{ image.alt | escape }}"
+              aria-label="Image {{ forloop.index }}"
+              type="button"
+            >
+              <img
+                src="{{ image | image_url: width: 200 }}"
+                alt="{{ image.alt | escape }}"
+                width="72"
+                height="72"
+                loading="lazy"
+              >
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Product Info + Variants ── {%- endcomment -%}
+    <div class="ms-info">
+      {%- if product.vendor -%}
+        <p class="ms-info__vendor">{{ product.vendor }}</p>
+      {%- endif -%}
+
+      <h1 class="ms-info__title">{{ product.title }}</h1>
+
+      <p class="ms-info__price-base">
+        À partir de <span>{{ product.price | money }}</span>
+      </p>
+
+      {%- if product.description != blank -%}
+        <div class="ms-info__description">{{ product.description }}</div>
+      {%- endif -%}
+
+      <div class="ms-section-label">
+        <span class="ms-section-label__text">
+          {{ section.settings.variants_heading | default: 'Sélectionnez vos options' }}
+        </span>
+        <button class="ms-select-all" id="msToggleAll" type="button">
+          Tout sélectionner
+        </button>
+      </div>
+
+      <div class="ms-variants" id="msVariants">
+        {%- for variant in product.variants -%}
+          <div
+            class="ms-variant {% unless variant.available %}is-soldout{% endunless %}"
+            data-variant-id="{{ variant.id }}"
+            data-variant-price="{{ variant.price }}"
+            role="checkbox"
+            aria-checked="false"
+            tabindex="0"
+          >
+            <div class="ms-variant__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+
+            <div class="ms-variant__content">
+              <span class="ms-variant__name">{{ variant.title }}</span>
+              {%- unless variant.available -%}
+                <span class="ms-variant__meta">Rupture de stock</span>
+              {%- endunless -%}
+            </div>
+
+            <div class="ms-variant__actions">
+              <div>
+                {%- if variant.compare_at_price > variant.price -%}
+                  <span class="ms-variant__price--compare">{{ variant.compare_at_price | money }}</span>
+                {%- endif -%}
+                <span class="ms-variant__price">{{ variant.price | money }}</span>
+              </div>
+
+              <div class="ms-qty">
+                <button class="ms-qty__btn" data-action="decrement" type="button" aria-label="Diminuer">−</button>
+                <input class="ms-qty__val" type="number" value="1" min="1" max="{{ variant.inventory_quantity | default: 99 }}" aria-label="Quantité">
+                <button class="ms-qty__btn" data-action="increment" type="button" aria-label="Augmenter">+</button>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="ms-footer">
+        <div class="ms-footer__inner">
+          <div class="ms-footer__summary">
+            <span class="ms-footer__count" id="msCount">0 article sélectionné</span>
+            <span class="ms-footer__total" id="msTotal">{{ 0 | money }}</span>
+          </div>
+          <button class="ms-footer__btn" id="msAddToCart" type="button" disabled>
+            <span class="ms-btn-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+              Ajouter au panier
+            </span>
+            <span class="ms-spinner"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ms-toast" id="msToast"></div>
+
+<script>window.msMoneyFormat = {{ shop.money_format | json }};</script>
+{{ 'product-multi-select.js' | asset_url | script_tag }}
+
+{% schema %}
+{
+  "name": "Multi-Select Product",
+  "tag": "section",
+  "class": "section-multi-select-product",
+  "settings": [
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Couleur d'accent",
+      "default": "#2c6e49"
+    },
+    {
+      "type": "text",
+      "id": "variants_heading",
+      "label": "Titre de la section variants",
+      "default": "Sélectionnez vos options"
+    }
+  ],
+  "templates": ["product"],
+  "presets": [{ "name": "Multi-Select Product" }]
+}
+{% endschema %}
