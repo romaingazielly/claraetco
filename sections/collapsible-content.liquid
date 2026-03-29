@@ -70,34 +70,69 @@
           {% endif %}
           <div class="grid__item">
             {%- for block in section.blocks -%}
-              <div
-                class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
-                {{ block.shopify_attributes }}
-              >
-                <details
-                  id="Details-{{ block.id }}-{{ section.id }}"
-                  {% if section.settings.open_first_collapsible_row and forloop.first %}
-                    open
-                  {% endif %}
+              {%- if block.type == 'dynamic_collapsible_row' -%}
+                {%- assign faq_metafield = collection.metafields[block.settings.metafield_namespace][block.settings.metafield_key] -%}
+                {%- assign faq_items = faq_metafield.value -%}
+                {%- if faq_items != blank -%}
+                  {%- for faq_item in faq_items -%}
+                    <div
+                      class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
+                      {{ block.shopify_attributes }}
+                    >
+                      <details
+                        id="Details-{{ block.id }}-{{ section.id }}-{{ forloop.index }}"
+                        {% if section.settings.open_first_collapsible_row and forloop.first %}
+                          open
+                        {% endif %}
+                      >
+                        <summary id="Summary-{{ block.id }}-{{ section.id }}-{{ forloop.index }}">
+                          <h3 class="accordion__title inline-richtext h4">
+                            {{ faq_item[block.settings.title_field] }}
+                          </h3>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <div
+                          class="accordion__content rte"
+                          id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}-{{ forloop.index }}"
+                          role="region"
+                          aria-labelledby="Summary-{{ block.id }}-{{ section.id }}-{{ forloop.index }}"
+                        >
+                          {{ faq_item[block.settings.content_field] }}
+                        </div>
+                      </details>
+                    </div>
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- else -%}
+                <div
+                  class="accordion{% if section.settings.layout == 'row' %} content-container color-{{ section.settings.container_color_scheme }} gradient{% endif %}"
+                  {{ block.shopify_attributes }}
                 >
-                  <summary id="Summary-{{ block.id }}-{{ section.id }}">
-                    {% render 'icon-accordion', icon: block.settings.icon %}
-                    <h3 class="accordion__title inline-richtext h4">
-                      {{ block.settings.heading | default: block.settings.page.title | escape }}
-                    </h3>
-                    {{- 'icon-caret.svg' | inline_asset_content -}}
-                  </summary>
-                  <div
-                    class="accordion__content rte"
-                    id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
-                    role="region"
-                    aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                  <details
+                    id="Details-{{ block.id }}-{{ section.id }}"
+                    {% if section.settings.open_first_collapsible_row and forloop.first %}
+                      open
+                    {% endif %}
                   >
-                    {{ block.settings.row_content }}
-                    {{ block.settings.page.content }}
-                  </div>
-                </details>
-              </div>
+                    <summary id="Summary-{{ block.id }}-{{ section.id }}">
+                      {% render 'icon-accordion', icon: block.settings.icon %}
+                      <h3 class="accordion__title inline-richtext h4">
+                        {{ block.settings.heading | default: block.settings.page.title | escape }}
+                      </h3>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div
+                      class="accordion__content rte"
+                      id="CollapsibleAccordion-{{ block.id }}-{{ section.id }}"
+                      role="region"
+                      aria-labelledby="Summary-{{ block.id }}-{{ section.id }}"
+                    >
+                      {{ block.settings.row_content }}
+                      {{ block.settings.page.content }}
+                    </div>
+                  </details>
+                </div>
+              {%- endif -%}
             {%- endfor -%}
           </div>
         </div>
@@ -287,6 +322,41 @@
     }
   ],
   "blocks": [
+    {
+      "type": "dynamic_collapsible_row",
+      "name": "FAQ collection",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Affiche automatiquement les entrées du metafield FAQ lié à la collection courante."
+        },
+        {
+          "type": "text",
+          "id": "metafield_namespace",
+          "label": "Namespace du metafield",
+          "default": "custom"
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Clé du metafield",
+          "default": "faq",
+          "info": "Clé du metafield de type liste de metaobjects sur la collection."
+        },
+        {
+          "type": "text",
+          "id": "title_field",
+          "label": "Clé du champ titre",
+          "default": "titre"
+        },
+        {
+          "type": "text",
+          "id": "content_field",
+          "label": "Clé du champ contenu",
+          "default": "contenu"
+        }
+      ]
+    },
     {
       "type": "collapsible_row",
       "name": "t:sections.collapsible_content.blocks.collapsible_row.name",
