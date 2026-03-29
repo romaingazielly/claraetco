@@ -16,6 +16,13 @@
           "type": "title",
           "settings": {}
         },
+        "senteur_kRDpKU": {
+          "type": "senteur",
+          "settings": {
+            "note_image_size": 40,
+            "note_font_size": 10
+          }
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -74,6 +81,7 @@
       },
       "block_order": [
         "title",
+        "senteur_kRDpKU",
         "price",
         "variant_picker",
         "inventory_dzJzHk",
