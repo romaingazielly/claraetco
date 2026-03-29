@@ -10,6 +10,7 @@
   {% endif %}
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {{ 'section-senteur.css' | asset_url | stylesheet_tag }}
   {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
   {{ 'component-price.css' | asset_url | stylesheet_tag }}
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
@@ -229,6 +230,73 @@
                     </div>
                   </details>
                 </div>
+              {%- when 'senteur' -%}
+                {%- assign senteur_meta = product.metafields.custom.senteur.value -%}
+                {%- if senteur_meta != blank -%}
+                  {%- assign ribbon_color = senteur_meta.couleur | default: '#d4a5b0' -%}
+                  <div class="product__senteur" style="--ribbon-color:{{ ribbon_color }};--note-image-size:{{ block.settings.note_image_size }}px;--note-font-size:{{ block.settings.note_font_size }}px;" {{ block.shopify_attributes }}>
+                    <div class="senteur__header">
+                      <span class="senteur__ribbon"></span>
+                      {%- if senteur_meta.senteur != blank -%}
+                        <h2 class="senteur__title">{{ senteur_meta.senteur }}</h2>
+                      {%- endif -%}
+                      <span class="senteur__ribbon"></span>
+                    </div>
+                    <ul class="senteur__notes">
+                      {%- if senteur_meta.note_de_tete != blank -%}
+                        <li class="senteur__note">
+                          <img
+                            src="{{ senteur_meta.note_de_tete | image_url: width: 160 }}"
+                            srcset="{{ senteur_meta.note_de_tete | image_url: width: 80 }} 80w, {{ senteur_meta.note_de_tete | image_url: width: 160 }} 160w"
+                            alt="{{ senteur_meta.note_de_tete.value.alt | escape }}"
+                            width="{{ block.settings.note_image_size }}"
+                            height="{{ block.settings.note_image_size }}"
+                            class="senteur__note-image"
+                            loading="lazy"
+                            decoding="async"
+                          >
+                          {%- if senteur_meta.note_de_tete.value.alt != blank -%}
+                            <span class="senteur__note-name">{{ senteur_meta.note_de_tete.value.alt }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endif -%}
+                      {%- if senteur_meta.note_de_c_ur != blank -%}
+                        <li class="senteur__note">
+                          <img
+                            src="{{ senteur_meta.note_de_c_ur | image_url: width: 160 }}"
+                            srcset="{{ senteur_meta.note_de_c_ur | image_url: width: 80 }} 80w, {{ senteur_meta.note_de_c_ur | image_url: width: 160 }} 160w"
+                            alt="{{ senteur_meta.note_de_c_ur.value.alt | escape }}"
+                            width="{{ block.settings.note_image_size }}"
+                            height="{{ block.settings.note_image_size }}"
+                            class="senteur__note-image"
+                            loading="lazy"
+                            decoding="async"
+                          >
+                          {%- if senteur_meta.note_de_c_ur.value.alt != blank -%}
+                            <span class="senteur__note-name">{{ senteur_meta.note_de_c_ur.value.alt }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endif -%}
+                      {%- if senteur_meta.note_de_fond != blank -%}
+                        <li class="senteur__note">
+                          <img
+                            src="{{ senteur_meta.note_de_fond | image_url: width: 160 }}"
+                            srcset="{{ senteur_meta.note_de_fond | image_url: width: 80 }} 80w, {{ senteur_meta.note_de_fond | image_url: width: 160 }} 160w"
+                            alt="{{ senteur_meta.note_de_fond.value.alt | escape }}"
+                            width="{{ block.settings.note_image_size }}"
+                            height="{{ block.settings.note_image_size }}"
+                            class="senteur__note-image"
+                            loading="lazy"
+                            decoding="async"
+                          >
+                          {%- if senteur_meta.note_de_fond.value.alt != blank -%}
+                            <span class="senteur__note-name">{{ senteur_meta.note_de_fond.value.alt }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endif -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -2097,6 +2165,37 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "senteur",
+      "name": "Senteur",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Le titre, la couleur du ribbon et les notes sont lus automatiquement depuis le metafield custom.senteur du produit."
+        },
+        {
+          "type": "range",
+          "id": "note_image_size",
+          "label": "Taille des images",
+          "min": 40,
+          "max": 120,
+          "step": 4,
+          "unit": "px",
+          "default": 64
+        },
+        {
+          "type": "range",
+          "id": "note_font_size",
+          "label": "Taille du texte",
+          "min": 8,
+          "max": 20,
+          "step": 1,
+          "unit": "px",
+          "default": 10
         }
       ]
     },

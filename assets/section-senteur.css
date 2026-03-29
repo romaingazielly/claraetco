@@ -1,0 +1,61 @@
+.senteur,
+.product__senteur {
+  padding-top: var(--margin-top, 0px);
+  padding-bottom: var(--margin-bottom, 0px);
+}
+
+.senteur__header {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 2.4rem;
+}
+
+.senteur__ribbon {
+  flex: 1;
+  height: 10px;
+  background-color: var(--ribbon-color, #d4a5b0);
+}
+
+@media screen and (min-width: 750px) {
+  .senteur__header {
+    width: 50%;
+  }
+}
+
+.senteur__title {
+  font-style: italic;
+  font-size: 2rem;
+  white-space: nowrap;
+  margin: 0;
+  line-height: 1;
+}
+
+.senteur__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.senteur__note {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.senteur__note-image {
+  width: var(--note-image-size, 64px);
+  height: var(--note-image-size, 64px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.senteur__note-name {
+  font-size: var(--note-font-size, 1rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 300;
+}

@@ -1,0 +1,123 @@
+{{ 'section-senteur.css' | asset_url | stylesheet_tag }}
+
+<div class="senteur page-width" style="--ribbon-color:{{ section.settings.ribbon_color }};--note-image-size:{{ section.settings.note_image_size }}px;--margin-top:{{ section.settings.margin_top }}px;--margin-bottom:{{ section.settings.margin_bottom }}px;">
+
+  <div class="senteur__header">
+    <span class="senteur__ribbon"></span>
+    {%- if section.settings.title != blank -%}
+      <h2 class="senteur__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+    <span class="senteur__ribbon"></span>
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <ul class="senteur__notes">
+      {%- for block in section.blocks -%}
+        <li class="senteur__note" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 160 }}"
+              srcset="{{ block.settings.image | image_url: width: 80 }} 80w, {{ block.settings.image | image_url: width: 160 }} 160w"
+              sizes="{{ section.settings.note_image_size }}px"
+              alt="{{ block.settings.name | escape }}"
+              width="{{ section.settings.note_image_size }}"
+              height="{{ section.settings.note_image_size }}"
+              class="senteur__note-image"
+              loading="lazy"
+              decoding="async"
+            >
+          {%- endif -%}
+          {%- if block.settings.name != blank -%}
+            <span class="senteur__note-name">{{ block.settings.name }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Senteur",
+  "tag": "section",
+  "class": "section-senteur",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "Florale"
+    },
+    {
+      "type": "color",
+      "id": "ribbon_color",
+      "label": "Couleur du ribbon",
+      "default": "#d4a5b0"
+    },
+    {
+      "type": "range",
+      "id": "note_image_size",
+      "label": "Taille des images",
+      "min": 40,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Espacement"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "note",
+      "name": "Note",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Nom",
+          "default": "Rose"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Senteur",
+      "blocks": [
+        { "type": "note", "settings": { "name": "Magnolia" } },
+        { "type": "note", "settings": { "name": "Rose" } },
+        { "type": "note", "settings": { "name": "Musc" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
