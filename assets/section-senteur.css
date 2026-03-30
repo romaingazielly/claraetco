@@ -52,8 +52,15 @@
 
 .senteur__note {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .senteur__note {
+    flex-direction: row;
+  }
 }
 
 .senteur__note-image {
