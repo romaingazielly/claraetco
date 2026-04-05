@@ -117,6 +117,14 @@
             "tab_content": "<p>Dès réception de votre commande sur le site internet et de la confirmation de votre paiement, votre commande sera traitée dans les meilleurs délais. Les commandes sont généralement expédiées dans un délai de 7 jours ouvrables suivant la commande, Clara&Co. ne prend cependant aucun engament en ce sens. En période de soldes ou de forte activité, ce délai pourra être exceptionnellement prolongé.</p>"
           }
         },
+        "tab_xLQjJr": {
+          "type": "tab",
+          "name": "Pyramide Olfactive",
+          "settings": {
+            "tab_title": "Pyramide Olfactive",
+            "tab_content": "{{ product.metafields.custom.pyramide_olfactive_complete | metafield_tag }}"
+          }
+        },
         "tab_Wh7JHt": {
           "type": "tab",
           "name": "CONSEILS D'UTILISATIONS / INSTRUCTIONS",
@@ -128,6 +136,7 @@
       },
       "block_order": [
         "tab_MPjbPV",
+        "tab_xLQjJr",
         "tab_Wh7JHt"
       ],
       "name": "Product Tabs",

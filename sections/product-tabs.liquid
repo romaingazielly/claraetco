@@ -3,37 +3,51 @@
 <div class="product-tabs-wrapper page-width color-{{ section.settings.color_scheme }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
   <div class="product-tabs">
     {%- if section.blocks.size > 0 -%}
+      {%- assign first_visible_tab = nil -%}
+      {%- for block in section.blocks -%}
+        {%- assign tab_text = block.settings.tab_content | strip_html | strip -%}
+        {%- if tab_text != blank and first_visible_tab == nil -%}
+          {%- assign first_visible_tab = block.id -%}
+        {%- endif -%}
+      {%- endfor -%}
+
       {%- comment -%} En-têtes des onglets {%- endcomment -%}
       <div class="tabs-header" role="tablist">
         {%- for block in section.blocks -%}
-          <div 
-            class="tab-button{% if forloop.first %} active{% endif %}" 
-            data-tab-target="tab-{{ block.id }}"
-            role="tab"
-            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
-            aria-controls="tab-{{ block.id }}"
-            id="tab-button-{{ block.id }}"
-            tabindex="0"
-            {{ block.shopify_attributes }}
-          >
-            {{ block.settings.tab_title }}
-          </div>
+          {%- assign tab_text = block.settings.tab_content | strip_html | strip -%}
+          {%- if tab_text != blank -%}
+            <div
+              class="tab-button{% if block.id == first_visible_tab %} active{% endif %}"
+              data-tab-target="tab-{{ block.id }}"
+              role="tab"
+              aria-selected="{% if block.id == first_visible_tab %}true{% else %}false{% endif %}"
+              aria-controls="tab-{{ block.id }}"
+              id="tab-button-{{ block.id }}"
+              tabindex="0"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.tab_title }}
+            </div>
+          {%- endif -%}
         {%- endfor -%}
       </div>
 
       {%- comment -%} Contenu des onglets {%- endcomment -%}
       <div class="tabs-content">
         {%- for block in section.blocks -%}
-          <div 
-            class="tab-panel{% if forloop.first %} active{% endif %}" 
-            id="tab-{{ block.id }}"
-            role="tabpanel"
-            aria-labelledby="tab-button-{{ block.id }}"
-          >
-            <div class="tab-content-inner">
-              {{ block.settings.tab_content }}
+          {%- assign tab_text = block.settings.tab_content | strip_html | strip -%}
+          {%- if tab_text != blank -%}
+            <div
+              class="tab-panel{% if block.id == first_visible_tab %} active{% endif %}"
+              id="tab-{{ block.id }}"
+              role="tabpanel"
+              aria-labelledby="tab-button-{{ block.id }}"
+            >
+              <div class="tab-content-inner">
+                {{ block.settings.tab_content }}
+              </div>
             </div>
-          </div>
+          {%- endif -%}
         {%- endfor -%}
       </div>
     {%- else -%}
