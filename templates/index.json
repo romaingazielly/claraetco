@@ -15,14 +15,14 @@
         "text_6FnfgW": {
           "type": "text",
           "settings": {
-            "text": "Vivez une expérience sensorielle unique",
+            "text": "<p>Vivez une expérience sensorielle unique</p>",
             "text_style": "body"
           }
         },
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Création d'émotions olfactives depuis 2017",
+            "heading": "<p>Création d'émotions olfactives depuis 2017</p>",
             "heading_size": "h2"
           }
         },
