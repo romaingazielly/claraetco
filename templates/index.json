@@ -43,9 +43,62 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "name": "Media banner",
       "settings": {
         "video": "shopify://files/videos/file.mp4",
+        "video_autoplay": true,
+        "video_loop": true,
+        "video_muted": true,
+        "image_overlay_opacity": 0,
+        "image_height": "extra-small",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
+    },
+    "image_banner_xRRLYX": {
+      "type": "image-banner",
+      "blocks": {
+        "buttons_qVBpHU": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "I love to the Moon",
+            "button_link_1": "shopify://products/bougie-bijou-fete-des-meres",
+            "button_style_secondary_1": true,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        },
+        "text_CTwaEQ": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "heading_EmKGHD": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "buttons_qVBpHU",
+        "text_CTwaEQ",
+        "heading_EmKGHD"
+      ],
+      "name": "Media banner",
+      "settings": {
+        "video": "shopify://files/videos/Plus qu’un cadeau. Une émotion à découvrir. (1440 x 600 px).mp4",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
@@ -547,6 +600,7 @@
       "settings": {
         "title": "Ils parlent de nous",
         "heading_size": "h1",
+        "grayscale": false,
         "image_width": "full",
         "image_ratio": "adapt",
         "button_label": "",
@@ -564,6 +618,7 @@
   },
   "order": [
     "image_banner",
+    "image_banner_xRRLYX",
     "featured_collection_carousel_bth8cL",
     "featured_collection",
     "slideshow_fEHJr7",
