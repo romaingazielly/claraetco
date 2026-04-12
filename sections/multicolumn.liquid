@@ -150,7 +150,7 @@
         {%- endfor -%}
       </ul>
 
-      {%- if show_mobile_slider -%}
+      {%- if show_mobile_slider and section.settings.hide_mobile_nav == false -%}
         <div class="slider-buttons large-up-hide">
           <button
             type="button"
@@ -384,6 +384,13 @@
       "id": "swipe_on_mobile",
       "default": false,
       "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_mobile_nav",
+      "default": false,
+      "label": "Cacher la navigation du carousel",
+      "info": "Masque les boutons précédent/suivant et le compteur sur mobile"
     },
     {
       "type": "header",
