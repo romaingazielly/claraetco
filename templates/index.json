@@ -57,7 +57,6 @@
         "desktop_content_alignment": "center",
         "show_text_box": false,
         "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
-        "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
@@ -65,51 +64,42 @@
     "image_banner_xRRLYX": {
       "type": "image-banner",
       "blocks": {
+        "heading_EmKGHD": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Plus qu'un cadeau.</p><h2>Une émotion à Découvrir.</h2>",
+            "heading_size": "h2"
+          }
+        },
         "buttons_qVBpHU": {
           "type": "buttons",
           "settings": {
             "button_label_1": "I love to the Moon",
             "button_link_1": "shopify://products/bougie-bijou-fete-des-meres",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
-        },
-        "text_CTwaEQ": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
-        "heading_EmKGHD": {
-          "type": "heading",
-          "settings": {
-            "heading": "",
-            "heading_size": "h2"
-          }
         }
       },
       "block_order": [
-        "buttons_qVBpHU",
-        "text_CTwaEQ",
-        "heading_EmKGHD"
+        "heading_EmKGHD",
+        "buttons_qVBpHU"
       ],
       "name": "Media banner",
       "settings": {
-        "video": "shopify://files/videos/Plus qu’un cadeau. Une émotion à découvrir. (1440 x 600 px).mp4",
+        "video": "shopify://files/videos/Plus qu’un cadeau. Une émotion à découvrir. (1440 x 600 px) (1).mp4",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
         "image_overlay_opacity": 0,
-        "image_height": "extra-small",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
-        "stack_images_on_mobile": false,
+        "color_scheme": "scheme-ddfa3625-078c-4486-8132-11a0e53c73d3",
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
@@ -519,17 +509,16 @@
     "rich_text_qFQydx": {
       "type": "rich-text",
       "blocks": {
-        "heading_JRGzMt": {
-          "type": "heading",
+        "text_zUVWJf": {
+          "type": "text",
           "settings": {
-            "heading": "",
-            "heading_size": "h1"
+            "text": "<h3>Vous êtes professionnel et vous souhaitez faire appel à notre savoir faire ?​</h3>"
           }
         },
         "text_B8bMKX": {
           "type": "text",
           "settings": {
-            "text": "<p>Développer une gamme spéciale avec un cahier des charges précis, créer un produit de A à Z , la seule limite est votre imagination.</p><p>Vous êtes professionnel et vous souhaitez faire appel à notre savoir faire ?​</p>"
+            "text": "<p>Développer une gamme spéciale avec un cahier des charges précis, créer un produit de A à Z , la seule limite est votre imagination.</p>"
           }
         },
         "button_JppERz": {
@@ -553,7 +542,7 @@
         }
       },
       "block_order": [
-        "heading_JRGzMt",
+        "text_zUVWJf",
         "text_B8bMKX",
         "button_JppERz",
         "image_mNn8ga"
@@ -562,7 +551,7 @@
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
         "full_width": true,
         "padding_top": 0,
         "padding_bottom": 52

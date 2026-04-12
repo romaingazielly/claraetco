@@ -106,6 +106,80 @@
         "padding_bottom": 12
       }
     },
+    "multicolumn_i6b8mC": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_NtVH4n": {
+          "type": "column",
+          "name": "Livraison Gratuite",
+          "settings": {
+            "image": "shopify://shop_images/Livraison_gratuite.webp",
+            "title": "Livraison Gratuite",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_r4RJck": {
+          "type": "column",
+          "name": "Artisanat Premium",
+          "settings": {
+            "image": "shopify://shop_images/Artisanat_premium.webp",
+            "title": "Artisanat Premium",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RkYVyD": {
+          "type": "column",
+          "name": "Made in Switzerland",
+          "settings": {
+            "image": "shopify://shop_images/Made_in_Switzerland.webp",
+            "title": "Made in Switzerland",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_tYMhU3": {
+          "type": "column",
+          "name": "Paiement Sécurisé",
+          "settings": {
+            "image": "shopify://shop_images/Paiement_securise.webp",
+            "title": "Paiement Sécurisé",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_NtVH4n",
+        "column_r4RJck",
+        "column_RkYVyD",
+        "column_tYMhU3"
+      ],
+      "name": "USP Produits",
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "grayscale": false,
+        "image_width": "half",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "hide_mobile_nav": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "product_tabs_3qkawL": {
       "type": "product-tabs",
       "blocks": {
@@ -167,6 +241,7 @@
   },
   "order": [
     "main",
+    "multicolumn_i6b8mC",
     "product_tabs_3qkawL",
     "related-products"
   ]
