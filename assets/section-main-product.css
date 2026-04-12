@@ -258,6 +258,13 @@ a.product__text {
   margin-bottom: 1.5rem;
 }
 
+@media only screen and (min-width: 750px) {
+  .product__title h1,
+  .product__title .h1 {
+    font-size: calc(var(--font-heading-scale) * 3.4rem);
+  }
+}
+
 .product__title > * {
   margin: 0;
 }
