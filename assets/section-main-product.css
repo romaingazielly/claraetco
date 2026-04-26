@@ -36,6 +36,36 @@ product-info {
   product-info .product__media-list .product-media-container.global-media-settings::after {
     content: none;
   }
+
+  /*
+   * PDP : fin liseré clair *au-dessus* du visuel — souvent
+   *   • .gradient qui remet un fond (--gradient-background) par-dessus background: none ;
+   *   • border-radius + overflow:visible (anti-aliasing) ;
+   *   • max-width: calc(100% - 2×bordure) alors que la bordure est retirée.
+   */
+  product-info.main-product .product__media-list .product-media-container.global-media-settings {
+    border: none !important;
+    border-radius: 0 !important;
+    background: none !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    --gradient-background: transparent;
+    background-attachment: unset !important;
+    box-shadow: none;
+    overflow: hidden !important;
+    max-width: 100% !important;
+  }
+
+  product-info.main-product .product__media-list .product-media-container.global-media-settings::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  product-info.main-product .product__media-list .global-media-settings img,
+  product-info.main-product .product__media-list .global-media-settings video,
+  product-info.main-product .product__media-list .global-media-settings iframe {
+    border-radius: 0 !important;
+  }
 }
 
 .product--no-media {
