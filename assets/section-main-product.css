@@ -1134,6 +1134,11 @@ a.product__text {
     align-items: center;
   }
 
+  /* Sinon le bloc image est centré verticalement dans le <li> → bande claire au-dessus (galerie principale). */
+  product-info.main-product .product__media-list > .product__media-item {
+    align-items: flex-start;
+  }
+
   .product__modal-opener {
     width: 100%;
   }
