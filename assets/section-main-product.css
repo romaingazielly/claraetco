@@ -453,10 +453,22 @@ a.product__text {
   /* Plus spécifique que .slider.slider--mobile (component-slider.css chargé après). */
   product-info.main-product .product__media-list.slider.slider--mobile {
     scroll-padding-left: 0;
-    /* x-auto crée un portail de scroll : sans ça, le vertical reste "dans" le carrousel. */
+    /* overflow-y: hidden évite un scroll interne inutile. pan-x seul BLOQUAIT le scroll vertical
+       de la page au doigt (touch) ; il faut pan-y pour laisser défiler toute la PDP. */
     overflow-y: hidden;
     overscroll-behavior-y: auto;
-    touch-action: pan-x pinch-zoom;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+
+  /* Le touch cible souvent l’image (touch-action: auto par défaut) : sans ça, le pan-x|pan-y
+     du <ul> ne s’applique pas et le scroll de page reste bloqué sur iOS / Chrome Android. */
+  product-info.main-product .product__media-list.slider--mobile :is(
+      .product__media-item,
+      .product-media-container,
+      a,
+      img
+    ) {
+    touch-action: pan-x pan-y pinch-zoom;
   }
 
   /*
