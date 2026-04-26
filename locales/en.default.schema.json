@@ -2368,18 +2368,6 @@
             "label": "Large"
           }
         },
-        "image_zoom": {
-          "label": "Zoom",
-          "options__1": {
-            "label": "Open lightbox"
-          },
-          "options__2": {
-            "label": "Click and hover"
-          },
-          "options__3": {
-            "label": "No zoom"
-          }
-        },
         "media_position": {
           "label": "Position",
           "options__1": {

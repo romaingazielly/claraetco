@@ -26,6 +26,7 @@ if (!customElements.get('product-info')) {
         );
 
         this.initQuantityHandlers();
+        this.initGalleryVerticalScrollForwarding();
         this.dispatchEvent(new CustomEvent('product-info:loaded', { bubbles: true }));
       }
 
@@ -45,9 +46,33 @@ if (!customElements.get('product-info')) {
         }
       }
 
+      /**
+       * Le ul.galerie en overflow-x capte la molette / le trackpad : le scroll vertical
+       * reste « dans » le carrousel. Délègue le défilement à la page (viewport < 750px).
+       */
+      initGalleryVerticalScrollForwarding() {
+        const gallery = this.querySelector('ul.product__media-list.slider--mobile');
+        if (!gallery) return;
+
+        this._galleryMql = window.matchMedia('(max-width: 749px)');
+
+        this._onProductGalleryWheel = (e) => {
+          if (!this._galleryMql.matches) return;
+          if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+          e.preventDefault();
+          window.scrollBy(0, e.deltaY);
+        };
+
+        this._galleryListForWheel = gallery;
+        gallery.addEventListener('wheel', this._onProductGalleryWheel, { passive: false });
+      }
+
       disconnectedCallback() {
         this.onVariantChangeUnsubscriber();
         this.cartUpdateUnsubscriber?.();
+        if (this._galleryListForWheel && this._onProductGalleryWheel) {
+          this._galleryListForWheel.removeEventListener('wheel', this._onProductGalleryWheel);
+        }
       }
 
       initializeProductSwapUtility() {
@@ -246,7 +271,6 @@ if (!customElements.get('product-info')) {
         const mediaGalleryDestination = html.querySelector(`media-gallery ul`);
 
         const refreshSourceData = () => {
-          if (this.hasAttribute('data-zoom-on-hover')) enableZoomOnHover(2);
           const mediaGallerySourceItems = Array.from(mediaGallerySource.querySelectorAll('li[data-media-id]'));
           const sourceSet = new Set(mediaGallerySourceItems.map((item) => item.dataset.mediaId));
           const sourceMap = new Map(

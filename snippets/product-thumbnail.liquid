@@ -40,9 +40,6 @@
     assign mobile_columns = 2
   endif
 
-  if media.media_type == 'image'
-    assign image_class = 'image-magnify-' | append: section.settings.image_zoom
-  endif
 -%}
 
 {%- capture sizes -%}
@@ -57,39 +54,30 @@
     class="product__modal-opener product__modal-opener--{{ media.media_type }}"
     data-modal="#ProductModal-{{ modal_id }}"
   >
-    <span
-      class="product__media-icon motion-reduce quick-add-hidden{% if media.media_type == 'image' %} product__media-icon--{{ section.settings.image_zoom }}{% endif %}"
-      aria-hidden="true"
-    >
-      {% case media.media_type %}
-        {% when 'video', 'external_video' %}
-          <span class="svg-wrapper">
-            {{- 'icon-play.svg' | inline_asset_content -}}
-          </span>
-        {% when 'model' %}
-          <span class="svg-wrapper">
-            {{- 'icon-3d-model.svg' | inline_asset_content -}}
-          </span>
-        {% else %}
-          <span class="svg-wrapper">
-            {{- 'icon-zoom.svg' | inline_asset_content -}}
-          </span>
-      {% endcase %}
-    </span>
+    {%- if media.media_type != 'image' -%}
+      <span class="product__media-icon motion-reduce quick-add-hidden" aria-hidden="true">
+        {% case media.media_type %}
+          {% when 'video', 'external_video' %}
+            <span class="svg-wrapper">
+              {{- 'icon-play.svg' | inline_asset_content -}}
+            </span>
+          {% when 'model' %}
+            <span class="svg-wrapper">
+              {{- 'icon-3d-model.svg' | inline_asset_content -}}
+            </span>
+        {% endcase %}
+      </span>
+    {%- endif -%}
     {%- render 'loading-spinner' -%}
     <div class="product__media media media--transparent">
       {{
         media.preview_image
         | image_url: width: 1946
-        | image_tag:
-          class: image_class,
-          loading: lazy,
-          sizes: sizes,
-          widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
+        | image_tag: loading: lazy, sizes: sizes, widths: '246, 493, 600, 713, 823, 990, 1100, 1206, 1346, 1426, 1646, 1946'
       }}
     </div>
     <button
-      class="product__media-toggle quick-add-hidden product__media-zoom-{{ section.settings.image_zoom }}"
+      class="product__media-toggle quick-add-hidden"
       type="button"
       aria-haspopup="dialog"
       data-media-id="{{ media.id }}"

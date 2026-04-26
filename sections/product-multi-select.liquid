@@ -21,7 +21,12 @@
 
     {%- comment -%} ── Image Gallery ── {%- endcomment -%}
     <div class="ms-gallery">
-      <div class="ms-gallery__main">
+      <div
+        class="ms-gallery__main"
+        {% if product.featured_image %}
+          style="--ms-gallery-aspect: {{ product.featured_image.aspect_ratio }};"
+        {% endif %}
+      >
         {%- if product.featured_image -%}
           <img
             id="msMainImage"

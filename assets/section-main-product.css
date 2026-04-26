@@ -18,6 +18,26 @@ product-info {
   gap: 0;
 }
 
+/* Mobile seulement : galerie bord à bord, pas de liseré ni espace (swipe) entre médias. Sur ≥750px, styles du thème (.global-media-settings dans base.css). */
+@media screen and (max-width: 749px) {
+  /* La liste galerie est une .grid : gap → bande (fond) entre médias. Bordure + fond .global-media-settings → liseré entre blocs. */
+  product-info .product__media-list.grid {
+    gap: 0;
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  product-info .product__media-list .product-media-container.global-media-settings {
+    border: none;
+    background: none;
+    background-attachment: unset;
+  }
+
+  product-info .product__media-list .product-media-container.global-media-settings::after {
+    content: none;
+  }
+}
+
 .product--no-media {
   max-width: 57rem;
   margin: 0 auto;
@@ -401,13 +421,81 @@ a.product__text {
 }
 
 @media screen and (max-width: 749px) {
-  .product__media-list {
-    margin-left: -2.5rem;
-    margin-bottom: 3rem;
-    width: calc(100% + 4rem);
+  /* Page produit : galerie 100% largeur, bord à bord */
+  .main-product .product:not(.product--no-media) .product__media-wrapper {
+    width: 100vw;
+    max-width: 100vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
   }
 
-  .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+  .main-product .product__media-list {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    max-width: none;
+    column-gap: 0;
+  }
+
+  .main-product .product__media-list.slider--mobile {
+    margin-bottom: 0;
+  }
+
+  .main-product .product__media-list.slider--mobile:after {
+    content: none;
+    padding-left: 0;
+  }
+
+  /* Plus spécifique que .slider.slider--mobile (component-slider.css chargé après). */
+  product-info.main-product .product__media-list.slider.slider--mobile {
+    scroll-padding-left: 0;
+    /* x-auto crée un portail de scroll : sans ça, le vertical reste "dans" le carrousel. */
+    overflow-y: hidden;
+    overscroll-behavior-y: auto;
+    touch-action: pan-x pinch-zoom;
+  }
+
+  /*
+   * component-slider : .slider--mobile .slider__slide a padding-top/bottom
+   * ( focus + ombre ) → fine bande blanche au-dessus / en dessous des visuels.
+   * Fichier chargé après : !important requis.
+   */
+  product-info.main-product .product__media-list.slider--mobile .slider__slide,
+  product-info.main-product .product__media-list.slider--mobile .product__media-item.slider__slide {
+    --focus-outline-padding: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .main-product .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Autres sections (ex. produit en vedette) : comportement d’origine */
+  product-info:not(.main-product) .product__media-list {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: calc(100% + 3rem);
+    column-gap: 0;
+  }
+
+  product-info:not(.main-product) .product__media-list.slider--mobile {
+    margin-bottom: 0;
+  }
+
+  product-info:not(.main-product) .product__media-list.slider--mobile:after {
+    content: none;
+    padding-left: 0;
+  }
+
+  product-info:not(.main-product) .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
     margin-left: -1.5rem;
     margin-right: -1.5rem;
   }
@@ -426,11 +514,45 @@ a.product__text {
   }
 
   .product__media-list .product__media-item {
-    width: calc(100% - 3rem - var(--grid-mobile-horizontal-spacing));
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .product__media-list.grid--peek .product__media-item:first-of-type,
+  .product__media-list .product__media-item:first-of-type {
+    margin-left: 0;
   }
 
   .product--mobile-columns .product__media-item {
     width: calc(50% - 1.5rem - var(--grid-mobile-horizontal-spacing));
+  }
+
+  /*
+   * Sans ça, « Limiter hauteur écran » + « Contenir » (réglages fiche produit) rétrécit
+   * le cadre (width: min(...) + margin auto) : l’image ne touche pas les bords.
+   */
+  product-info.main-product .product-media-container {
+    max-width: 100%;
+  }
+
+  product-info.main-product .product-media-container.constrain-height {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  product-info.main-product .product-media-container.constrain-height.media-fit-contain {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /*
+   * Sans « min( hauteur max viewport, ratio ) » : la hauteur suit le ratio
+   * naturel (padding % = hauteur relative à la largeur), donc pleine
+   * largeur + bonnes proportions.
+   */
+  product-info.main-product .product-media-container.constrain-height .media {
+    padding-top: var(--ratio-percent);
   }
 }
 
@@ -500,7 +622,7 @@ a.product__text {
 }
 
 .product__modal-opener--image .product__media-toggle:hover {
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .product__modal-opener:hover .product__media-icon {
@@ -1053,22 +1175,6 @@ a.product__text {
   border-color: rgb(var(--color-foreground));
 }
 
-.image-magnify-full-size {
-  cursor: zoom-out;
-  z-index: 1;
-  margin: 0;
-  border-radius: calc(var(--media-radius) - var(--media-border-width));
-}
-
-.image-magnify-hover {
-  cursor: zoom-in;
-}
-
-.product__modal-opener--image .product__media-zoom-none,
-.product__media-icon--none {
-  display: none;
-}
-
 .product__modal-opener > .loading__spinner {
   top: 50%;
   left: 50%;
@@ -1083,20 +1189,6 @@ a.product__text {
 .product__modal-opener .path {
   stroke: rgb(var(--color-button));
   opacity: 0.75;
-}
-
-@media (hover: hover) {
-  .product__media-zoom-hover,
-  .product__media-icon--hover {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 749px) {
-  .product__media-zoom-hover,
-  .product__media-icon--hover {
-    display: flex;
-  }
 }
 
 .js .product__media {

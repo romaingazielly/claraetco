@@ -19,7 +19,8 @@
 
 .ms-gallery__main {
   width: 100%;
-  aspect-ratio: 1;
+  /* Ratio défini en Liquid (--ms-gallery-aspect), défaut 1:1 */
+  aspect-ratio: var(--ms-gallery-aspect, 1);
   border-radius: var(--ms-radius);
   overflow: hidden;
   background: var(--ms-bg);
@@ -425,13 +426,33 @@
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
+  .ms-product {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
   .ms-product__layout {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 0;
   }
 
   .ms-gallery {
     position: static;
+  }
+
+  .ms-gallery__main {
+    width: 100vw;
+    max-width: 100vw;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    border-radius: 0;
+  }
+
+  .ms-info {
+    padding: 1.5rem 1.5rem 4rem;
   }
 
   .ms-info__title {

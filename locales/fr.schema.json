@@ -2069,18 +2069,6 @@
             "label": "Droite"
           }
         },
-        "image_zoom": {
-          "label": "Zoom",
-          "options__1": {
-            "label": "Ouvrir lightbox"
-          },
-          "options__2": {
-            "label": "Cliquer et passer la souris"
-          },
-          "options__3": {
-            "label": "Pas de zoom"
-          }
-        },
         "constrain_to_viewport": {
           "label": "Limiter à la hauteur de l’écran"
         },
