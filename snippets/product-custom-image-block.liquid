@@ -15,6 +15,11 @@
 -%}
 
 {%- if image != blank -%}
+  {%- liquid
+    assign d2 = desktop_width | times: 2
+    assign t2 = tablet_width | times: 2
+    assign m2 = mobile_width | times: 2
+  -%}
   <style>
     {{ block_selector }} .product-custom-image__img {
       width: {{ mobile_width }}px;
@@ -47,36 +52,36 @@
         height="{{ desktop_height }}"
       >
     {%- else -%}
+      {%- comment -%} Rasters: 2x widths must be precomputed; `| times: 2` after `image_url` would apply to the URL string, not the width. `format: 'webp'` makes CDN output explicit (incl. WebP sources). {%- endcomment -%}
       <picture>
         <source
           media="(min-width: 990px)"
+          type="image/webp"
           srcset="
-            {{ image | image_url: width: desktop_width }} 1x,
-            {{ image | image_url: width: desktop_width | times: 2 }} 2x
+            {{ image | image_url: width: desktop_width, format: 'webp' }} 1x,
+            {{ image | image_url: width: d2, format: 'webp' }} 2x
           "
-          width="{{ desktop_width }}"
-          height="{{ desktop_height }}"
         >
         <source
           media="(min-width: 750px)"
+          type="image/webp"
           srcset="
-            {{ image | image_url: width: tablet_width }} 1x,
-            {{ image | image_url: width: tablet_width | times: 2 }} 2x
+            {{ image | image_url: width: tablet_width, format: 'webp' }} 1x,
+            {{ image | image_url: width: t2, format: 'webp' }} 2x
           "
-          width="{{ tablet_width }}"
-          height="{{ tablet_height }}"
         >
         <img
           class="product-custom-image__img"
-          src="{{ image | image_url: width: mobile_width }}"
+          src="{{ image | image_url: width: mobile_width, format: 'webp' }}"
           srcset="
-            {{ image | image_url: width: mobile_width }} 1x,
-            {{ image | image_url: width: mobile_width | times: 2 }} 2x
+            {{ image | image_url: width: mobile_width, format: 'webp' }} 1x,
+            {{ image | image_url: width: m2, format: 'webp' }} 2x
           "
           alt="{{ image_alt }}"
           loading="lazy"
           width="{{ mobile_width }}"
           height="{{ mobile_height }}"
+          sizes="(min-width: 990px) {{ desktop_width }}px, (min-width: 750px) {{ tablet_width }}px, {{ mobile_width }}px"
         >
       </picture>
     {%- endif -%}
