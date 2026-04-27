@@ -15,10 +15,9 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    {% comment %} Romain - Ajout de la font Cinzel {% endcomment %}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    {%- if settings.use_cinzel_for_headings -%}
+      {{ 'cinzel.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
 
     <title>
       {{ page_title }}
@@ -110,10 +109,13 @@
         --font-body-weight: {{ settings.type_body_font.weight }};
         --font-body-weight-bold: {{ settings.type_body_font.weight | plus: 300 | at_most: 1000 }};
 
+        {%- if settings.use_cinzel_for_headings -%}
+        --font-heading-family: 'Cinzel', {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        {%- else -%}
         --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        {%- endif -%}
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
-        --font-heading-family: 'Cinzel', {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};

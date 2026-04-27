@@ -42,6 +42,16 @@
         "type_header_font": {
           "label": "Police"
         },
+        "header_cinzel": {
+          "content": "Cinzel (titres)"
+        },
+        "paragraph_cinzel": {
+          "content": "Cinzel n’apparaît pas dans le sélecteur de polices Shopify. Elle est servie en local via les fichiers du thème (WOFF2 sur le CDN Shopify, sans appel à Google Fonts). La « police des titres » choisie ci-dessus sert de repli quand Cinzel est désactivée."
+        },
+        "use_cinzel_for_headings": {
+          "label": "Utiliser Cinzel pour les titres",
+          "info": "Si l’option est activée, les titres utilisent Cinzel en premier, puis la police de titre choisie. Si elle est désactivée, seule la police des titres ci-dessus est utilisée (les fichiers Cinzel ne sont pas chargés)."
+        },
         "header__1": {
           "content": "Titres"
         },

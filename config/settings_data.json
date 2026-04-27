@@ -13,6 +13,7 @@
     "logo_width": 120,
     "favicon": "shopify://shop_images/Gemini_Generated_Image_4yyb9s4yyb9s4yyb.png",
     "type_header_font": "assistant_n4",
+    "use_cinzel_for_headings": true,
     "heading_scale": 100,
     "type_body_font": "montserrat_n4",
     "body_scale": 100,
@@ -267,6 +268,7 @@
         }
       },
       "type_header_font": "assistant_n4",
+      "use_cinzel_for_headings": true,
       "heading_scale": 100,
       "type_body_font": "assistant_n4",
       "body_scale": 100,

@@ -14,6 +14,10 @@
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
 
+    {%- if settings.use_cinzel_for_headings -%}
+      {{ 'cinzel.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
     {%- unless settings.type_header_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
@@ -44,7 +48,11 @@
         --font-body-style: {{ settings.type_body_font.style }};
         --font-body-weight: {{ settings.type_body_font.weight }};
 
+        {%- if settings.use_cinzel_for_headings -%}
+        --font-heading-family: 'Cinzel', {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        {%- else -%}
         --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
+        {%- endif -%}
         --font-heading-style: {{ settings.type_header_font.style }};
         --font-heading-weight: {{ settings.type_header_font.weight }};
 

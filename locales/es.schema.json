@@ -42,7 +42,17 @@
         "type_header_font": {
           "label": "Fuente"
         },
-        "header__1": {
+                "header_cinzel": {
+          "content": "Cinzel (headings)"
+        },
+        "paragraph_cinzel": {
+          "content": "Cinzel is not in Shopify's font menu. This theme serves Cinzel from your theme files (WOFF2 on the Shopify CDN, no request to Google Fonts). The heading font you choose above is the fallback when Cinzel is turned off."
+        },
+        "use_cinzel_for_headings": {
+          "label": "Use Cinzel for headings",
+          "info": "When enabled, headings use Cinzel first, then the heading font above. When disabled, only the selected heading font is used and Cinzel is not loaded."
+        },
+"header__1": {
           "content": "Títulos"
         },
         "header__2": {

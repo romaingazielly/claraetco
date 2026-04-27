@@ -115,6 +115,21 @@
         "label": "t:settings_schema.typography.settings.type_header_font.label"
       },
       {
+        "type": "header",
+        "content": "t:settings_schema.typography.settings.header_cinzel.content"
+      },
+      {
+        "type": "paragraph",
+        "content": "t:settings_schema.typography.settings.paragraph_cinzel.content"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_cinzel_for_headings",
+        "default": true,
+        "label": "t:settings_schema.typography.settings.use_cinzel_for_headings.label",
+        "info": "t:settings_schema.typography.settings.use_cinzel_for_headings.info"
+      },
+      {
         "type": "range",
         "id": "heading_scale",
         "min": 100,
