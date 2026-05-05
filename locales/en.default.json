@@ -565,6 +565,9 @@
           },
           "pick_them_up_in_store": {
             "many": "collect them in store"
+          },
+          "remove_item_only": {
+            "many": "Withdraw items"
           }
         },
         "pickup_items_count": {

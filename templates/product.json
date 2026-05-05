@@ -54,6 +54,7 @@
         "custom_image_WG6xrr": {
           "type": "custom_image",
           "name": "TrustPilot",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Trustpilot.svg",
             "image_alt": "Clara&Co sur TrustPilot",
@@ -64,6 +65,22 @@
             "tablet_width": 200,
             "tablet_height": 350,
             "desktop_width": 140,
+            "desktop_height": 500
+          }
+        },
+        "custom_image_8Y4N8b": {
+          "type": "custom_image",
+          "name": "TrustPilot",
+          "settings": {
+            "image": "shopify://shop_images/Trustpilot.webp",
+            "image_alt": "Clara&Co sur TrustPilot",
+            "image_link": "",
+            "alignment": "left",
+            "mobile_width": 320,
+            "mobile_height": 250,
+            "tablet_width": 400,
+            "tablet_height": 350,
+            "desktop_width": 400,
             "desktop_height": 500
           }
         },
@@ -87,6 +104,7 @@
         "inventory_dzJzHk",
         "buy_buttons",
         "custom_image_WG6xrr",
+        "custom_image_8Y4N8b",
         "description",
         "share"
       ],

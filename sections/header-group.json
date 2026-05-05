@@ -18,7 +18,7 @@
           "type": "announcement",
           "settings": {
             "text": "Excellence et authenticité suisses, mises en valeur par un savoir-faire d'exception",
-            "link": ""
+            "link": "shopify://collections/all"
           }
         }
       },
@@ -46,8 +46,8 @@
         "show_line_separator": true,
         "color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
         "menu_color_scheme": "scheme-02125e46-8b0b-4cfb-a264-445853b62c45",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "enable_customer_avatar": true,
         "margin_bottom": 0,
         "padding_top": 12,
