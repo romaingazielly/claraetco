@@ -122,7 +122,7 @@
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if section.settings.transparent_background %} header-wrapper--transparent{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -304,6 +304,15 @@
     </div>
   </header>
 </{{ header_tag }}>
+
+<script>
+  (function () {
+    var header = document.querySelector('.section-header');
+    if (header) {
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    }
+  })();
+</script>
 
 {%- if settings.cart_type == 'notification' -%}
   {%- render 'cart-notification',
@@ -568,6 +577,12 @@
       "id": "show_line_separator",
       "default": true,
       "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_background",
+      "default": false,
+      "label": "Fond transparent"
     },
     {
       "type": "header",

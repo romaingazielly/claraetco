@@ -2233,18 +2233,6 @@ input[type='checkbox'] {
   align-items: center;
 }
 
-.announcement-bar__link:hover {
-  text-decoration: underline;
-}
-
-.announcement-bar__link .icon-arrow {
-  display: inline-block;
-  pointer-events: none;
-  margin-left: 0.8rem;
-  vertical-align: middle;
-  margin-bottom: 0.2rem;
-}
-
 .announcement-bar__message {
   text-align: center;
   padding: 1rem 0;
@@ -2349,6 +2337,17 @@ input[type='checkbox'] {
 
 .header-wrapper--border-bottom {
   border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.header-wrapper--transparent,
+.header-wrapper--transparent.gradient {
+  background: transparent;
+}
+
+.section-header.scrolled-past-header .header-wrapper--transparent,
+.section-header.scrolled-past-header .header-wrapper--transparent.gradient {
+  background: rgb(var(--color-background));
+  background: var(--gradient-background);
 }
 
 .header {

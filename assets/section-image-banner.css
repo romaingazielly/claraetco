@@ -6,6 +6,14 @@
   isolation: isolate;
 }
 
+.banner--overlap-header {
+  margin-top: calc(var(--header-height, 0px) * -1);
+}
+
+.banner--overlap-header .banner__box {
+  margin-top: var(--header-height, 0px);
+}
+
 .banner__box {
   text-align: center;
 }
@@ -110,6 +118,22 @@
 
   .banner--large:not(.banner--adapt) {
     min-height: 72rem;
+  }
+
+  .banner--overlap-header.banner--extra-small:not(.banner--adapt) {
+    min-height: calc(32rem + var(--header-height, 0px));
+  }
+
+  .banner--overlap-header.banner--small:not(.banner--adapt) {
+    min-height: calc(42rem + var(--header-height, 0px));
+  }
+
+  .banner--overlap-header.banner--medium:not(.banner--adapt) {
+    min-height: calc(56rem + var(--header-height, 0px));
+  }
+
+  .banner--overlap-header.banner--large:not(.banner--adapt) {
+    min-height: calc(72rem + var(--header-height, 0px));
   }
 
   .banner__content.banner__content--top-left {
