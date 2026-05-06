@@ -119,6 +119,7 @@
         "media_position": "left",
         "hide_variants": true,
         "enable_video_looping": false,
+        "overlap_with_header": true,
         "padding_top": 36,
         "padding_bottom": 12
       }
