@@ -87,4 +87,26 @@
     margin: 0;
     padding: 0;
   }
+
+  /* Toggle PDP : remonte le main sous tout le groupe d'en-tête (announcement + utility + header)
+     pour superposer la première image avec le header dépoli. Mobile + PDP uniquement. */
+  body.template-product:has(.product--overlap-header) #MainContent {
+    margin-top: calc(var(--header-group-height, var(--header-height, 0px)) * -1);
+  }
+
+  /* Transition douce frosted → opaque quand la galerie n'est plus sous le header. */
+  body.template-product:has(.product--overlap-header) #shopify-section-group-header-group,
+  body.template-product:has(.product--overlap-header) .shopify-section-group-header-group {
+    transition: background-color 0.2s ease, backdrop-filter 0.2s ease, -webkit-backdrop-filter 0.2s ease;
+  }
+
+  /* Bascule en opaque (sans blur) une fois `.scrolled-past-header` posé sur .section-header.
+     Le seuil est calculé dans getTransparentThreshold() = bas de la galerie - hauteur du groupe. */
+  body.template-product:has(.product--overlap-header) #shopify-section-group-header-group:has(.section-header.scrolled-past-header),
+  body.template-product:has(.product--overlap-header) .shopify-section-group-header-group:has(.section-header.scrolled-past-header) {
+    background: rgb(var(--color-background));
+    background: var(--gradient-background);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
 }

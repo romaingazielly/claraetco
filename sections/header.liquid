@@ -357,13 +357,30 @@
 
     setHeaderHeight() {
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      const headerGroup = document.querySelector(
+        '#shopify-section-group-header-group, .shopify-section-group-header-group'
+      );
+      if (headerGroup) {
+        document.documentElement.style.setProperty('--header-group-height', `${headerGroup.offsetHeight}px`);
+      }
       this.transparentThreshold = null;
     }
 
     getTransparentThreshold() {
       if (this.transparentThreshold != null) return this.transparentThreshold;
+      const isMobile = window.matchMedia('(max-width: 749px)').matches;
+      const productMedia = isMobile
+        ? document.querySelector('.product--overlap-header .product__media-list')
+        : null;
       const bannerMedia = document.querySelector('.banner--overlap-header .banner__media');
-      if (bannerMedia) {
+      if (productMedia) {
+        const headerGroup = document.querySelector(
+          '#shopify-section-group-header-group, .shopify-section-group-header-group'
+        );
+        const offset = headerGroup ? headerGroup.offsetHeight : this.header.offsetHeight;
+        this.transparentThreshold =
+          productMedia.getBoundingClientRect().bottom + window.pageYOffset - offset;
+      } else if (bannerMedia) {
         this.transparentThreshold =
           bannerMedia.getBoundingClientRect().bottom + window.pageYOffset - this.header.offsetHeight;
       } else {

@@ -518,6 +518,22 @@ a.product__text {
     margin-right: 0;
   }
 
+  /* Boutons/compteur du slider produit superposés en bas de la galerie sur mobile.
+     pointer-events: none sur le wrapper laisse passer les swipes ; les boutons restent cliquables. */
+  .main-product .product__media-wrapper slider-component .slider-buttons {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .main-product .product__media-wrapper slider-component .slider-buttons .slider-button,
+  .main-product .product__media-wrapper slider-component .slider-buttons .slider-counter {
+    pointer-events: auto;
+  }
+
   /* Autres sections (ex. produit en vedette) : comportement d’origine */
   product-info:not(.main-product) .product__media-list {
     margin-left: -1.5rem;
