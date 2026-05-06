@@ -153,6 +153,47 @@
         </span>
       </button>
     </div>
+    {%- if media_count > 1 and hide_mobile_slider != true -%}
+      <div class="slider-dots quick-add-hidden" aria-label="{{ 'general.slider.name' | t }}">
+        {%- for i in (1..media_count) -%}
+          <button
+            type="button"
+            class="slider-dot{% if forloop.first %} is-active{% endif %}"
+            {% if forloop.first %}aria-current="true"{% endif %}
+            aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ media_count }}"
+          ></button>
+        {%- endfor -%}
+      </div>
+      <script>
+        (function () {
+          customElements.whenDefined('slider-component').then(function () {
+            var slider = document.getElementById('GalleryViewer-{{ section.id }}');
+            if (!slider) return;
+            var dots = slider.querySelectorAll('.slider-dot');
+            if (!dots.length) return;
+            dots.forEach(function (dot, index) {
+              dot.addEventListener('click', function () {
+                if (typeof slider.setSlidePosition === 'function' && slider.sliderItemOffset) {
+                  slider.setSlidePosition(index * slider.sliderItemOffset);
+                }
+              });
+            });
+            slider.addEventListener('slideChanged', function (event) {
+              var currentIndex = (event.detail && event.detail.currentPage ? event.detail.currentPage : 1) - 1;
+              dots.forEach(function (dot, i) {
+                var active = i === currentIndex;
+                dot.classList.toggle('is-active', active);
+                if (active) {
+                  dot.setAttribute('aria-current', 'true');
+                } else {
+                  dot.removeAttribute('aria-current');
+                }
+              });
+            });
+          });
+        })();
+      </script>
+    {%- endif -%}
   </slider-component>
   {%- if first_3d_model -%}
     <button

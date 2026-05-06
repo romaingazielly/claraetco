@@ -69,7 +69,7 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}{% if section.settings.overlap_with_header %} product--overlap-header{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}{% if section.settings.overlap_with_header %} product--overlap-header{% endif %}{% if section.settings.disable_mobile_zoom %} product--no-mobile-zoom{% endif %}">
       <div class="grid__item product__media-wrapper">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
@@ -2444,6 +2444,12 @@
       "id": "overlap_with_header",
       "default": false,
       "label": "Superposer la galerie sous le header"
+    },
+    {
+      "type": "checkbox",
+      "id": "disable_mobile_zoom",
+      "default": false,
+      "label": "Désactiver le zoom au clic sur mobile"
     },
     {
       "type": "header",
