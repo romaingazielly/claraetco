@@ -2342,12 +2342,18 @@ input[type='checkbox'] {
 .header-wrapper--transparent,
 .header-wrapper--transparent.gradient {
   background: transparent;
+  transition: background-color 0.3s ease;
 }
 
 .section-header.scrolled-past-header .header-wrapper--transparent,
 .section-header.scrolled-past-header .header-wrapper--transparent.gradient {
   background: rgb(var(--color-background));
   background: var(--gradient-background);
+}
+
+.header-wrapper--transparent:has(.menu-drawer-container.menu-opening),
+.header-wrapper--transparent.gradient:has(.menu-drawer-container.menu-opening) {
+  background: #ffffff;
 }
 
 .header {
