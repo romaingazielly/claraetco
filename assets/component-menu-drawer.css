@@ -81,6 +81,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   grid-template-rows: 1fr auto;
   align-content: space-between;
   overflow-y: auto;
+  overscroll-behavior: contain;
   height: 100%;
 }
 
@@ -240,4 +241,14 @@ details[open].menu-opening > .menu-drawer__submenu {
     filter: none !important;
     transition: none !important;
   }
+}
+
+.overflow-hidden-mobile #MainContent,
+.overflow-hidden-mobile .shopify-section-group-footer-group,
+.overflow-hidden-tablet #MainContent,
+.overflow-hidden-tablet .shopify-section-group-footer-group,
+.overflow-hidden-desktop #MainContent,
+.overflow-hidden-desktop .shopify-section-group-footer-group {
+  pointer-events: none;
+  touch-action: none;
 }

@@ -52,6 +52,7 @@
         "video_muted": true,
         "image_overlay_opacity": 0,
         "image_height": "extra-small",
+        "overlap_with_header": false,
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "center",
@@ -89,12 +90,13 @@
       ],
       "name": "Media banner",
       "settings": {
-        "video": "shopify://files/videos/Plus qu’un cadeau. Une émotion à découvrir. (1440 x 600 px) (1).mp4",
+        "video": "shopify://files/videos/to-the-moon-and-back-fete-des-meres-compressed-h265.mp4",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
         "image_overlay_opacity": 0,
         "image_height": "adapt",
+        "overlap_with_header": true,
         "image_behavior": "none",
         "desktop_content_position": "bottom-center",
         "desktop_content_alignment": "left",
@@ -600,6 +602,7 @@
         "color_scheme": "scheme-b7206e9d-0b01-40b1-81c8-cc0b7e579dbb",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
+        "hide_mobile_nav": false,
         "padding_top": 36,
         "padding_bottom": 36
       }

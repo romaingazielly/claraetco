@@ -166,7 +166,7 @@
           "background": "#f6f4ef",
           "background_gradient": "",
           "text": "#111111",
-          "button": "#173557",
+          "button": "#111111",
           "button_label": "#ffffff",
           "secondary_button_label": "#0b1a2a",
           "shadow": "#121212"
