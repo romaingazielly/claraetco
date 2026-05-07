@@ -47,7 +47,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -80,7 +80,7 @@
             "mobile_height": 250,
             "tablet_width": 400,
             "tablet_height": 350,
-            "desktop_width": 400,
+            "desktop_width": 440,
             "desktop_height": 500
           }
         },
@@ -120,6 +120,7 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "overlap_with_header": true,
+        "disable_mobile_zoom": true,
         "padding_top": 36,
         "padding_bottom": 12
       }

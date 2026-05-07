@@ -91,6 +91,7 @@
       "name": "Media banner",
       "settings": {
         "video": "shopify://files/videos/to-the-moon-and-back-fete-des-meres-compressed-h265.mp4",
+        "image": "shopify://shop_images/clara-et-co-fete-des-meres_f9844bf8-d0ec-4f5a-b390-a459a1ff1a96.webp",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
@@ -98,12 +99,74 @@
         "image_height": "adapt",
         "overlap_with_header": true,
         "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-center",
         "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-ddfa3625-078c-4486-8132-11a0e53c73d3",
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "item_marquee_di4gYf": {
+      "type": "item-marquee",
+      "blocks": {
+        "item_XRbdcy": {
+          "type": "item",
+          "name": "Cire végétale",
+          "settings": {
+            "item_name": "Cire végétale"
+          }
+        },
+        "item_Xb9LT8": {
+          "type": "item",
+          "name": "Coulée à la main",
+          "settings": {
+            "item_name": "Coulée à la main"
+          }
+        },
+        "item_gXEXdT": {
+          "type": "item",
+          "name": "Verre soufflé artisanal",
+          "settings": {
+            "item_name": "Verre soufflé artisanal"
+          }
+        },
+        "item_yTVpDT": {
+          "type": "item",
+          "name": "Artisanat responsable",
+          "settings": {
+            "item_name": "Artisanat responsable"
+          }
+        },
+        "item_3UzRhA": {
+          "type": "item",
+          "name": "Fragrances naturelles",
+          "settings": {
+            "item_name": "Fragrances naturelles"
+          }
+        }
+      },
+      "block_order": [
+        "item_XRbdcy",
+        "item_Xb9LT8",
+        "item_gXEXdT",
+        "item_yTVpDT",
+        "item_3UzRhA"
+      ],
+      "name": "USPs",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "grayscale": false,
+        "bg_color": "#0b1a2a",
+        "text_color": "#ffffff",
+        "row_height": 70,
+        "image_height": 72,
+        "direction": "left",
+        "scroll_speed": 30,
+        "image_gap": 120
       }
     },
     "featured_collection_carousel_bth8cL": {
@@ -611,6 +674,7 @@
   "order": [
     "image_banner",
     "image_banner_xRRLYX",
+    "item_marquee_di4gYf",
     "featured_collection_carousel_bth8cL",
     "featured_collection",
     "slideshow_fEHJr7",

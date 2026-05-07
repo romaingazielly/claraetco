@@ -16,6 +16,12 @@
         "label": "t:settings_schema.logo.settings.logo_image.label"
       },
       {
+        "type": "image_picker",
+        "id": "logo_inverted",
+        "label": "Inverted logo",
+        "info": "Saved for future use over transparent headers. Not currently rendered."
+      },
+      {
         "type": "range",
         "id": "logo_width",
         "min": 50,
