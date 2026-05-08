@@ -9,8 +9,9 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Clara-and-co-logo.webp",
-    "logo_width": 120,
+    "logo": "shopify://shop_images/clara-and-co-logo_c87370f0-8f87-4a18-834d-5940ffab1f0f.svg",
+    "logo_inverted": "shopify://shop_images/Clara_Co_logo_inverted.svg",
+    "logo_width": 80,
     "favicon": "shopify://shop_images/Gemini_Generated_Image_4yyb9s4yyb9s4yyb.png",
     "type_header_font": "assistant_n4",
     "use_cinzel_for_headings": true,
@@ -166,7 +167,7 @@
           "background": "#f6f4ef",
           "background_gradient": "",
           "text": "#111111",
-          "button": "#111111",
+          "button": "#173557",
           "button_label": "#ffffff",
           "secondary_button_label": "#0b1a2a",
           "shadow": "#121212"
@@ -203,6 +204,28 @@
           "button_label": "#ffffff",
           "secondary_button_label": "#6e3c2b",
           "shadow": "#6e3c2b"
+        }
+      },
+      "scheme-4dfb3227-623f-46a7-ac00-9b2380bc777c": {
+        "settings": {
+          "background": "#0b1a2a",
+          "background_gradient": "",
+          "text": "#f6f4ef",
+          "button": "#f6f4ef",
+          "button_label": "#f6f4ef",
+          "secondary_button_label": "#c6a45e",
+          "shadow": "#f6f4ef"
+        }
+      },
+      "scheme-ffbbf4c9-d423-4904-afb7-d53e7106c593": {
+        "settings": {
+          "background": "#f6f4ef",
+          "background_gradient": "",
+          "text": "#0b1a2a",
+          "button": "#0b1a2a",
+          "button_label": "#f6f4ef",
+          "secondary_button_label": "#0b1a2a",
+          "shadow": "#0b1a2a"
         }
       }
     }

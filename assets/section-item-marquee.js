@@ -5,18 +5,22 @@ document.addEventListener('DOMContentLoaded', function () {
     var track = row.querySelector('.item-marquee__track');
     if (!track) return;
 
-    row.addEventListener('touchstart', function (e) {
-      e.preventDefault();
-      track.classList.add('is-paused');
-    }, { passive: false });
+    var pauseOnInteract = row.classList.contains('item-marquee__row--pause-on-hover');
 
-    row.addEventListener('touchend', function () {
-      track.classList.remove('is-paused');
-    });
+    if (pauseOnInteract) {
+      row.addEventListener('touchstart', function (e) {
+        e.preventDefault();
+        track.classList.add('is-paused');
+      }, { passive: false });
 
-    row.addEventListener('touchcancel', function () {
-      track.classList.remove('is-paused');
-    });
+      row.addEventListener('touchend', function () {
+        track.classList.remove('is-paused');
+      });
+
+      row.addEventListener('touchcancel', function () {
+        track.classList.remove('is-paused');
+      });
+    }
 
     row.addEventListener('contextmenu', function (e) {
       e.preventDefault();
