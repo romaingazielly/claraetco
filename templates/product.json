@@ -117,7 +117,7 @@
         "gallery_layout": "stacked",
         "mobile_thumbnails": "hide",
         "media_position": "left",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "overlap_with_header": true,
         "disable_mobile_zoom": true,

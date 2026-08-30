@@ -68,15 +68,15 @@
         "heading_EmKGHD": {
           "type": "heading",
           "settings": {
-            "heading": "<p>Plus qu'un cadeau.</p><h2>Une émotion à Découvrir.</h2>",
+            "heading": "<p>Plus qu'un anti-moustique</p><h2>Un art de vivre dehors</h2>",
             "heading_size": "h2"
           }
         },
         "buttons_qVBpHU": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "I love to the Moon",
-            "button_link_1": "shopify://products/bougie-bijou-fete-des-meres",
+            "button_label_1": "Découvrir Hors des murs",
+            "button_link_1": "shopify://products/hors-des-murs",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -88,10 +88,10 @@
         "heading_EmKGHD",
         "buttons_qVBpHU"
       ],
-      "name": "Media banner",
+      "name": "Media banner - Hors des murs",
       "settings": {
-        "video": "shopify://files/videos/to-the-moon-and-back-fete-des-meres-compressed-h265.mp4",
-        "image": "shopify://shop_images/clara-et-co-fete-des-meres_f9844bf8-d0ec-4f5a-b390-a459a1ff1a96.webp",
+        "video": "shopify://files/videos/copie-hors-des-murs-bannieres-web.mp4",
+        "image": "shopify://shop_images/hors-des-murs-bannieres-fallback.webp",
         "video_autoplay": true,
         "video_loop": true,
         "video_muted": true,
@@ -102,7 +102,7 @@
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "left",
         "show_text_box": false,
-        "color_scheme": "scheme-ddfa3625-078c-4486-8132-11a0e53c73d3",
+        "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
         "mobile_content_alignment": "center",
         "show_text_below": false
       }
@@ -112,9 +112,9 @@
       "blocks": {
         "item_XRbdcy": {
           "type": "item",
-          "name": "Cire végétale",
+          "name": "Cire 100% végétale",
           "settings": {
-            "item_name": "Cire végétale"
+            "item_name": "Cire 100% végétale"
           }
         },
         "item_Xb9LT8": {
@@ -126,9 +126,9 @@
         },
         "item_gXEXdT": {
           "type": "item",
-          "name": "Verre soufflé artisanal",
+          "name": "Fabriqué en Suisse",
           "settings": {
-            "item_name": "Verre soufflé artisanal"
+            "item_name": "Fabriqué en Suisse"
           }
         },
         "item_yTVpDT": {
@@ -140,9 +140,9 @@
         },
         "item_3UzRhA": {
           "type": "item",
-          "name": "Fragrances naturelles",
+          "name": "Fragrances de Grasse",
           "settings": {
-            "item_name": "Fragrances naturelles"
+            "item_name": "Fragrances de Grasse"
           }
         }
       },
