@@ -88,6 +88,7 @@
         "heading_EmKGHD",
         "buttons_qVBpHU"
       ],
+      "disabled": true,
       "name": "Media banner - Hors des murs",
       "settings": {
         "video": "shopify://files/videos/copie-hors-des-murs-bannieres-web.mp4",
@@ -105,6 +106,76 @@
         "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17",
         "mobile_content_alignment": "center",
         "show_text_below": false
+      }
+    },
+    "media_carousel_npJ3RX": {
+      "type": "media-carousel",
+      "blocks": {
+        "slide_j7kfLq": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/copie-hors-des-murs-bannieres-web.mp4",
+            "heading": "<h2>Plus qu'un anti-moustique</h2><h2>Un art de vivre dehors</h2>",
+            "heading_size": "h1",
+            "text": "",
+            "text_style": "body",
+            "button_label_1": "Découvrir Hors des murs",
+            "button_link_1": "shopify://products/hors-des-murs",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "image_overlay_opacity": 0,
+            "desktop_content_position": "middle-left",
+            "desktop_content_alignment": "left",
+            "show_text_box": false,
+            "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17"
+          }
+        },
+        "slide_pqNgTM": {
+          "type": "slide",
+          "settings": {
+            "video": "shopify://files/videos/file.mp4",
+            "heading": "<h2>Découvrez Clara & Co</h2>",
+            "heading_size": "h1",
+            "text": "",
+            "text_style": "body",
+            "button_label_1": "Voir les bougies",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "image_overlay_opacity": 0,
+            "desktop_content_position": "middle-left",
+            "desktop_content_alignment": "left",
+            "show_text_box": false,
+            "color_scheme": "scheme-525457d8-04d0-46d3-ba56-354158802f17"
+          }
+        }
+      },
+      "block_order": [
+        "slide_j7kfLq",
+        "slide_pqNgTM"
+      ],
+      "name": "Carousel média",
+      "settings": {
+        "autoplay": false,
+        "autoplay_speed": 5,
+        "wait_for_video": false,
+        "pause_on_hover": true,
+        "show_dots": true,
+        "dots_position": "overlay",
+        "dots_color": "light",
+        "dots_offset": 24,
+        "video_loop": true,
+        "video_muted": true,
+        "slide_height": "medium",
+        "overlap_with_header": true,
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "show_text_below": false,
+        "accessibility_info": "Carousel média"
       }
     },
     "item_marquee_di4gYf": {
@@ -698,6 +769,7 @@
   "order": [
     "image_banner",
     "image_banner_xRRLYX",
+    "media_carousel_npJ3RX",
     "item_marquee_di4gYf",
     "featured_collection_carousel_bth8cL",
     "featured_collection",

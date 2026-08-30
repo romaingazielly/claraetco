@@ -1,0 +1,743 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-media-carousel.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign first_block = section.blocks.first
+  assign desktop_ratio = 0
+  assign mobile_ratio = 0
+
+  if first_block.settings.image != blank
+    assign desktop_ratio = first_block.settings.image.aspect_ratio
+  elsif first_block.settings.video != blank
+    assign desktop_ratio = first_block.settings.video.aspect_ratio
+  endif
+
+  assign mobile_ratio = desktop_ratio
+  if first_block.settings.image_mobile != blank
+    assign mobile_ratio = first_block.settings.image_mobile.aspect_ratio
+  elsif first_block.settings.video_mobile != blank
+    assign mobile_ratio = first_block.settings.video_mobile.aspect_ratio
+  endif
+-%}
+
+{%- if section.settings.slide_height == 'adapt' and desktop_ratio > 0 -%}
+  {%- style -%}
+    @media screen and (max-width: 749px) {
+      #MediaCarousel-{{ section.id }} .media-carousel__slide::before,
+      #MediaCarousel-{{ section.id }} .banner__media::before,
+      #MediaCarousel-{{ section.id }} .media-carousel__slide:not(.banner--mobile-bottom) .banner__content::before {
+        padding-bottom: {{ 1 | divided_by: mobile_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+
+    @media screen and (min-width: 750px) {
+      #MediaCarousel-{{ section.id }} .media-carousel__slide::before,
+      #MediaCarousel-{{ section.id }} .banner__media::before {
+        padding-bottom: {{ 1 | divided_by: desktop_ratio | times: 100 }}%;
+        content: '';
+        display: block;
+      }
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
+{%- style -%}
+  #MediaCarousel-{{ section.id }} {
+    --media-carousel-autoplay-duration: {{ section.settings.autoplay_speed }}s;
+    --media-carousel-dot-offset: {{ section.settings.dots_offset }}px;
+  }
+
+  {%- for block in section.blocks -%}
+    #MediaCarouselSlide-{{ section.id }}-{{ forloop.index }} .banner__media::after {
+      opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};
+    }
+  {%- endfor -%}
+{%- endstyle -%}
+
+<media-carousel
+  id="MediaCarousel-{{ section.id }}"
+  {%- comment -%}
+    Volontairement sans `scroll-trigger animate--fade-in` : l'animation d'opacité
+    de Dawn aplatit tout le sous-arbre dans une seule couche de rendu et prive
+    les vidéos de leur couche de composition, ce qui les fait apparaître par
+    morceaux pendant le défilement de la page.
+  {%- endcomment -%}
+  class="media-carousel media-carousel--dots-{{ section.settings.dots_position }} media-carousel--dots-{{ section.settings.dots_color }}{% if section.settings.overlap_with_header %} media-carousel--overlap-header{% endif %}"
+  role="region"
+  aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+  aria-label="{{ section.settings.accessibility_info | escape }}"
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-speed="{{ section.settings.autoplay_speed }}"
+  data-wait-for-video="{{ section.settings.wait_for_video }}"
+  data-pause-on-hover="{{ section.settings.pause_on_hover }}"
+>
+  <div
+    class="media-carousel__track"
+    id="MediaCarouselTrack-{{ section.id }}"
+    data-media-carousel-track
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign has_desktop_media = false
+        if block.settings.video != blank or block.settings.image != blank
+          assign has_desktop_media = true
+        endif
+        assign has_mobile_media = false
+        if block.settings.video_mobile != blank or block.settings.image_mobile != blank
+          assign has_mobile_media = true
+        endif
+
+        assign image_widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+        assign image_sizes = '100vw'
+        if section.settings.image_behavior == 'ambient'
+          assign image_widths = '450, 660, 900, 1320, 1800, 2136, 2400, 3600, 7680'
+          assign image_sizes = '120vw'
+        endif
+
+        assign loading = 'lazy'
+        assign fetch_priority = 'auto'
+        if forloop.first
+          assign loading = 'eager'
+          if section.index == 1
+            assign fetch_priority = 'high'
+          endif
+        endif
+      -%}
+      <div
+        class="media-carousel__slide banner banner--content-align-{{ block.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.slide_height }}{% if section.settings.slide_height == 'adapt' and desktop_ratio > 0 %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{% endif %}{% if block.settings.show_text_box == false %} banner--desktop-transparent{% endif %}"
+        id="MediaCarouselSlide-{{ section.id }}-{{ forloop.index }}"
+        data-index="{{ forloop.index0 }}"
+        role="group"
+        aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+        aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+        {{ block.shopify_attributes }}
+      >
+        {%- comment -%} MÉDIA DESKTOP (vidéo prioritaire, image en repli) {%- endcomment -%}
+        {%- if has_desktop_media -%}
+          <div
+            class="banner__media media{% if has_mobile_media %} banner__media--desktop{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+            data-viewport="{% if has_mobile_media %}desktop{% else %}any{% endif %}"
+          >
+            {%- if block.settings.video != blank -%}
+              {{
+                block.settings.video
+                | video_tag:
+                  class: 'banner__video media-carousel__video',
+                  autoplay: false,
+                  loop: section.settings.video_loop,
+                  muted: section.settings.video_muted,
+                  controls: false,
+                  image_size: '1920x'
+              }}
+            {%- else -%}
+              {%- assign image_height = block.settings.image.width
+                | divided_by: block.settings.image.aspect_ratio
+              -%}
+              {{
+                block.settings.image
+                | image_url: width: 3840
+                | image_tag:
+                  width: block.settings.image.width,
+                  height: image_height,
+                  sizes: image_sizes,
+                  widths: image_widths,
+                  loading: loading,
+                  fetchpriority: fetch_priority
+              }}
+            {%- endif -%}
+          </div>
+        {%- elsif has_mobile_media == false -%}
+          <div class="banner__media media placeholder">
+            {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+            {%- if placeholder_slide == 1 -%}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- else -%}
+              {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} MÉDIA MOBILE {%- endcomment -%}
+        {%- if has_mobile_media -%}
+          <div
+            class="banner__media media banner__media--mobile{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+            data-viewport="mobile"
+          >
+            {%- if block.settings.video_mobile != blank -%}
+              {{
+                block.settings.video_mobile
+                | video_tag:
+                  class: 'banner__video media-carousel__video',
+                  autoplay: false,
+                  loop: section.settings.video_loop,
+                  muted: section.settings.video_muted,
+                  controls: false,
+                  image_size: '750x'
+              }}
+            {%- else -%}
+              {%- assign image_height_mobile = block.settings.image_mobile.width
+                | divided_by: block.settings.image_mobile.aspect_ratio
+              -%}
+              {{
+                block.settings.image_mobile
+                | image_url: width: 750
+                | image_tag:
+                  width: block.settings.image_mobile.width,
+                  height: image_height_mobile,
+                  sizes: '100vw',
+                  widths: '375, 550, 750',
+                  loading: loading
+              }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- liquid
+          assign has_content = false
+          if block.settings.heading != blank
+            assign has_content = true
+          elsif block.settings.text != blank
+            assign has_content = true
+          elsif block.settings.button_label_1 != blank
+            assign has_content = true
+          elsif block.settings.button_label_2 != blank
+            assign has_content = true
+          endif
+        -%}
+        {%- comment -%}
+          Le conteneur est toujours rendu : son ::before porte la hauteur des
+          slides en mode « S'adapter au premier média » sur mobile.
+        {%- endcomment -%}
+        <div class="banner__content banner__content--{{ block.settings.desktop_content_position }} page-width">
+          {%- if has_content -%}
+          <div class="banner__box content-container content-container--full-width-mobile color-{{ block.settings.color_scheme }} gradient">
+            {%- if block.settings.heading != blank -%}
+              <div class="banner__heading rte {{ block.settings.heading_size }}">
+                {{ block.settings.heading }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.text != blank -%}
+              <div class="banner__text rte {{ block.settings.text_style }}">
+                {{ block.settings.text }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.button_label_1 != blank or block.settings.button_label_2 != blank -%}
+              <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}">
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a
+                    {% if block.settings.button_link_1 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_1 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label_1 | escape -}}
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                      role="link" aria-disabled="true"
+                    {% else %}
+                      href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}"
+                  >
+                    {{- block.settings.button_label_2 | escape -}}
+                  </a>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.show_dots and section.blocks.size > 1 -%}
+    <div class="media-carousel__dots" role="tablist" aria-label="{{ 'sections.slideshow.carousel' | t }}">
+      {%- for block in section.blocks -%}
+        <button
+          type="button"
+          class="media-carousel__dot"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          aria-controls="MediaCarouselSlide-{{ section.id }}-{{ forloop.index }}"
+          tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+          data-media-carousel-dot
+          data-index="{{ forloop.index0 }}"
+        >
+          <span class="media-carousel__dot-visual" aria-hidden="true">
+            <span class="media-carousel__dot-track"></span>
+            <span class="media-carousel__dot-progress"></span>
+          </span>
+          <span class="visually-hidden">
+            {{- 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }}
+            {{ forloop.length -}}
+          </span>
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</media-carousel>
+
+<script src="{{ 'media-carousel.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Carousel média",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 5,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Défilement"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Défilement automatique",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "unit": "s",
+      "label": "Durée d'affichage de chaque slide",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "wait_for_video",
+      "label": "Attendre la fin de la vidéo avant de passer à la slide suivante",
+      "default": false,
+      "info": "Sans effet si la lecture en boucle des vidéos est activée."
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Mettre en pause au survol",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Navigation (points)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dots",
+      "label": "Afficher les points de navigation",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "dots_position",
+      "options": [
+        {
+          "value": "overlay",
+          "label": "Sur le média"
+        },
+        {
+          "value": "below",
+          "label": "Sous le média"
+        }
+      ],
+      "default": "overlay",
+      "label": "Position des points"
+    },
+    {
+      "type": "select",
+      "id": "dots_color",
+      "options": [
+        {
+          "value": "light",
+          "label": "Clair (blanc)"
+        },
+        {
+          "value": "dark",
+          "label": "Sombre (noir)"
+        }
+      ],
+      "default": "light",
+      "label": "Couleur des points"
+    },
+    {
+      "type": "range",
+      "id": "dots_offset",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Décalage des points depuis le bas",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Paramètres vidéo"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "Lecture en boucle",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "video_muted",
+      "label": "Muet (recommandé pour la lecture automatique)",
+      "default": true,
+      "info": "Les navigateurs bloquent la lecture automatique avec son."
+    },
+    {
+      "type": "header",
+      "content": "Apparence"
+    },
+    {
+      "type": "select",
+      "id": "slide_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "S'adapter au premier média"
+        },
+        {
+          "value": "extra-small",
+          "label": "Extra small"
+        },
+        {
+          "value": "small",
+          "label": "Petit"
+        },
+        {
+          "value": "medium",
+          "label": "Moyen"
+        },
+        {
+          "value": "large",
+          "label": "Grand"
+        }
+      ],
+      "default": "medium",
+      "label": "Hauteur des slides",
+      "info": "Toutes les slides partagent la même hauteur."
+    },
+    {
+      "type": "checkbox",
+      "id": "overlap_with_header",
+      "label": "Superposer sous le header",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "image_behavior",
+      "options": [
+        {
+          "value": "none",
+          "label": "Aucun"
+        },
+        {
+          "value": "ambient",
+          "label": "Mouvement ambiant"
+        }
+      ],
+      "default": "none",
+      "label": "Animation du média"
+    },
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Gauche"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        },
+        {
+          "value": "right",
+          "label": "Droite"
+        }
+      ],
+      "default": "center",
+      "label": "Alignement du contenu sur mobile"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_text_below",
+      "label": "Afficher le contenu sous le média sur mobile",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "accessibility_info",
+      "label": "Description du carousel",
+      "default": "Carousel média",
+      "info": "Lue par les lecteurs d'écran."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Média desktop"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Fichier vidéo"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (utilisée si pas de vidéo)"
+        },
+        {
+          "type": "header",
+          "content": "Média mobile"
+        },
+        {
+          "type": "video",
+          "id": "video_mobile",
+          "label": "Fichier vidéo mobile"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image mobile (utilisée si pas de vidéo)"
+        },
+        {
+          "type": "header",
+          "content": "Contenu"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Titre"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "options": [
+            {
+              "value": "h2",
+              "label": "Petit"
+            },
+            {
+              "value": "h1",
+              "label": "Moyen"
+            },
+            {
+              "value": "h0",
+              "label": "Grand"
+            },
+            {
+              "value": "hxl",
+              "label": "Très grand"
+            },
+            {
+              "value": "hxxl",
+              "label": "Extra large"
+            }
+          ],
+          "default": "h1",
+          "label": "Taille du titre"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Texte"
+        },
+        {
+          "type": "select",
+          "id": "text_style",
+          "options": [
+            {
+              "value": "body",
+              "label": "Corps de texte"
+            },
+            {
+              "value": "subtitle",
+              "label": "Sous-titre"
+            },
+            {
+              "value": "caption-with-letter-spacing",
+              "label": "Majuscules"
+            }
+          ],
+          "default": "body",
+          "label": "Style du texte"
+        },
+        {
+          "type": "header",
+          "content": "Bouton 1"
+        },
+        {
+          "type": "text",
+          "id": "button_label_1",
+          "label": "Libellé",
+          "info": "Laisser vide pour masquer le bouton."
+        },
+        {
+          "type": "url",
+          "id": "button_link_1",
+          "label": "Lien"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary_1",
+          "label": "Style de bouton secondaire",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Bouton 2"
+        },
+        {
+          "type": "text",
+          "id": "button_label_2",
+          "label": "Libellé",
+          "info": "Laisser vide pour masquer le bouton."
+        },
+        {
+          "type": "url",
+          "id": "button_link_2",
+          "label": "Lien"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary_2",
+          "label": "Style de bouton secondaire",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Apparence"
+        },
+        {
+          "type": "range",
+          "id": "image_overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 10,
+          "unit": "%",
+          "label": "Opacité du voile sombre",
+          "default": 0
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_position",
+          "options": [
+            {
+              "value": "top-left",
+              "label": "Haut gauche"
+            },
+            {
+              "value": "top-center",
+              "label": "Haut centre"
+            },
+            {
+              "value": "top-right",
+              "label": "Haut droite"
+            },
+            {
+              "value": "middle-left",
+              "label": "Milieu gauche"
+            },
+            {
+              "value": "middle-center",
+              "label": "Milieu centre"
+            },
+            {
+              "value": "middle-right",
+              "label": "Milieu droite"
+            },
+            {
+              "value": "bottom-left",
+              "label": "Bas gauche"
+            },
+            {
+              "value": "bottom-center",
+              "label": "Bas centre"
+            },
+            {
+              "value": "bottom-right",
+              "label": "Bas droite"
+            }
+          ],
+          "default": "middle-center",
+          "label": "Position du contenu (desktop)"
+        },
+        {
+          "type": "select",
+          "id": "desktop_content_alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Gauche"
+            },
+            {
+              "value": "center",
+              "label": "Centre"
+            },
+            {
+              "value": "right",
+              "label": "Droite"
+            }
+          ],
+          "default": "center",
+          "label": "Alignement du contenu (desktop)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_text_box",
+          "label": "Afficher le conteneur derrière le contenu",
+          "default": false
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Palette de couleurs",
+          "default": "scheme-1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Carousel média",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

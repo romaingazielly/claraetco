@@ -1,0 +1,250 @@
+/* ==========================================================================
+   Carousel média — même format que la bannière média (section-image-banner.css)
+   Les slides réutilisent les classes .banner / .banner__media / .banner__box
+   ========================================================================== */
+
+.media-carousel {
+  display: block;
+  position: relative;
+  isolation: isolate;
+}
+
+/* --- Piste de défilement --------------------------------------------------- */
+
+.media-carousel__track {
+  display: flex;
+  align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+/* Pas de `scroll-behavior: smooth` ici : il ralentirait aussi l'animation de
+   snap native après un swipe, et donc le basculement du point actif. Le
+   défilement animé au clic sur un point est demandé explicitement en JS. */
+
+.media-carousel__track::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.media-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  max-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Pas de `contain: paint` ni d'animation d'opacité sur ces éléments : tout
+   contexte d'empilement posé au-dessus d'une <video> plein cadre la prive de sa
+   couche de composition propre, et la vidéo se peint alors par tuiles pendant
+   le défilement de la page. */
+
+/* Une seule slide : pas de défilement possible */
+.media-carousel__track:has(> .media-carousel__slide:only-child) {
+  overflow-x: hidden;
+}
+
+/* Slide sans titre/texte/bouton : le conteneur reste dans le DOM (son ::before
+   porte la hauteur en mode « adapt ») mais ne doit occuper aucune place. */
+.media-carousel .banner__content:empty {
+  padding: 0;
+}
+
+/* --- Vidéos ---------------------------------------------------------------- */
+
+.media-carousel__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Superposition sous le header ------------------------------------------ */
+
+.media-carousel--overlap-header {
+  margin-top: calc(var(--header-height, 0px) * -1);
+}
+
+.media-carousel--overlap-header .banner__box {
+  margin-top: var(--header-height, 0px);
+}
+
+@media screen and (min-width: 750px) {
+  .media-carousel--overlap-header .banner--extra-small:not(.banner--adapt) {
+    min-height: calc(32rem + var(--header-height, 0px));
+  }
+
+  .media-carousel--overlap-header .banner--small:not(.banner--adapt) {
+    min-height: calc(42rem + var(--header-height, 0px));
+  }
+
+  .media-carousel--overlap-header .banner--medium:not(.banner--adapt) {
+    min-height: calc(56rem + var(--header-height, 0px));
+  }
+
+  .media-carousel--overlap-header .banner--large:not(.banner--adapt) {
+    min-height: calc(72rem + var(--header-height, 0px));
+  }
+}
+
+/* --- Navigation par points ------------------------------------------------- */
+
+.media-carousel__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  z-index: 3;
+}
+
+.media-carousel--dots-overlay .media-carousel__dots {
+  position: absolute;
+  bottom: var(--media-carousel-dot-offset, 24px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.media-carousel--dots-below .media-carousel__dots {
+  position: relative;
+  margin-top: 1.6rem;
+}
+
+.media-carousel__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  min-height: 1.1rem;
+  padding: 0.15rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.media-carousel__dot:focus-visible {
+  outline: 0.2rem solid currentColor;
+  outline-offset: 0.2rem;
+  border-radius: 999px;
+}
+
+.media-carousel__dot-visual {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--media-carousel-dot-idle);
+  overflow: hidden;
+  /* Le site de référence utilise 0.38s ; ramené à 0.22s pour une bascule plus
+     franche. Remonter cette valeur pour un morphing plus doux. */
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1), height 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 0.22s cubic-bezier(0.4, 0, 0.2, 1), background 0.15s ease;
+}
+
+.media-carousel__dot:hover .media-carousel__dot-visual {
+  background: var(--media-carousel-dot-hover);
+}
+
+.media-carousel__dot-track,
+.media-carousel__dot-progress {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.media-carousel__dot-track {
+  opacity: 0;
+  background: var(--media-carousel-dot-track);
+  transition: opacity 0.2s ease;
+}
+
+.media-carousel__dot-progress {
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--media-carousel-dot-active);
+}
+
+/* Point actif : le rond se transforme en pilule qui se remplit */
+.media-carousel__dot[aria-selected='true'] .media-carousel__dot-visual {
+  width: 2.75rem;
+  height: 8px;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.media-carousel__dot[aria-selected='true'] .media-carousel__dot-track {
+  opacity: 1;
+}
+
+/* Remplissage progressif uniquement quand le défilement automatique tourne */
+.media-carousel[data-autoplay-running='true'] .media-carousel__dot[aria-selected='true'] .media-carousel__dot-progress {
+  animation: media-carousel-dot-fill var(--media-carousel-autoplay-duration, 5s) linear forwards;
+}
+
+.media-carousel[data-autoplay-running='true'].media-carousel--paused
+  .media-carousel__dot[aria-selected='true']
+  .media-carousel__dot-progress {
+  animation-play-state: paused;
+}
+
+.media-carousel:not([data-autoplay-running='true']) .media-carousel__dot[aria-selected='true'] .media-carousel__dot-progress {
+  animation: none;
+  transform: scaleX(1);
+}
+
+@keyframes media-carousel-dot-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media-carousel__dot-visual,
+  .media-carousel__dot-track {
+    transition: none;
+  }
+
+  .media-carousel .media-carousel__dot[aria-selected='true'] .media-carousel__dot-progress {
+    animation: none;
+    transform: scaleX(1);
+  }
+}
+
+/* Palettes de points */
+.media-carousel--dots-light {
+  --media-carousel-dot-idle: rgba(255, 255, 255, 0.45);
+  --media-carousel-dot-hover: rgba(255, 255, 255, 0.6);
+  --media-carousel-dot-track: rgba(255, 255, 255, 0.28);
+  --media-carousel-dot-active: #ffffff;
+}
+
+.media-carousel--dots-dark {
+  --media-carousel-dot-idle: rgba(0, 0, 0, 0.3);
+  --media-carousel-dot-hover: rgba(0, 0, 0, 0.45);
+  --media-carousel-dot-track: rgba(0, 0, 0, 0.15);
+  --media-carousel-dot-active: #000000;
+}
+
+.media-carousel--dots-light .media-carousel__dot {
+  color: #ffffff;
+}
+
+.media-carousel--dots-dark .media-carousel__dot {
+  color: #000000;
+}

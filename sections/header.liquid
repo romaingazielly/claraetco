@@ -372,7 +372,12 @@
       const productMedia = isMobile
         ? document.querySelector('.product--overlap-header .product__media-list')
         : null;
-      const bannerMedia = document.querySelector('.banner--overlap-header .banner__media');
+      // Le carousel média expose sa piste plutôt qu'un `.banner__media` : la
+      // première de ses variantes de média peut être celle masquée par le point
+      // de rupture, et son getBoundingClientRect() renverrait alors des zéros.
+      const bannerMedia =
+        document.querySelector('.banner--overlap-header .banner__media') ||
+        document.querySelector('.media-carousel--overlap-header .media-carousel__track');
       if (productMedia) {
         const headerGroup = document.querySelector(
           '#shopify-section-group-header-group, .shopify-section-group-header-group'
